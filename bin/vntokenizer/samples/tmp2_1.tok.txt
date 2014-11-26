@@ -1,0 +1,41 @@
+unlock iphone 4 một bí_mật của apple
+vừa st được , các bác xem đúng không ? trích từ táoviet . vn từ bác ip 4binhduong
+sơ lượt_về iphone
+- vào năm 2007 apple phát_hành phiên_bản iphone 2g đầu_tiên và cứ 1 năm apple lại cho ra_đời 1 chiếc iphone nữa .
+tính đến nay đã có những máy iphone sau : iphone 2g , , iphone 3g , iphone 3gs và iphone 4
+- thông_thường iphone bán ra bởi 1 nhà_cung_cấp dịch_vụ ( nhà mạng ) tại 1 số quốc_gia và bắt sử_dụng kèm theo hợp_đồng dịch_vụ khi mua máy , nếu bạn mua máy như_vậy sẽ có_giá rất tốt ( giá rẻ ) nhằm khuyến_khích khách_hàng sử_dụng mạng đó và nhà mạng sẽ thu được phần_nhiều giá_trị từ tiền sử_dụng dịch_vụ mạng của bạn .
+bên_cạnh đó iphone còn bán phiên_bản quốc_tế chỉ dành cho một_số thị_trường .
+- sự khác_nhau giữa iphone khóa mạng và iphone quốc_tế : iphone khóa mạng là iphone chỉ sử_dụng duy_nhất sim của 1 nhà mạng - nhà mạng đó là mạng bán ra iphone cho bạn ngoài_ra khi bạn bỏ sim tất_cả các mạng khác đều không sử_dụng dụng được .
+iphone quốc_tế là iphone sử_dụng được tất_cả các sim của tất_cả các nhà mạng trên khắp thể giới .
+iphone khóa mạng khi đã được mở khóa mạng thì sẽ cũng sử_dụng được tất_cả các sim của các nhà mạng trên khắp thế_giới , lúc ấy nó cũng tương_đương như iphone quốc_tế .
+nhưng sau đó khi apple phát_hành 1 phiên_bản phần_mềm mới , nếu phiên_bản đó chưa mở khóa mạng được mà bạn cập_nhật iphone lên phiên_bản đó thì nó sẽ bị khóa mạng lại , bạn không_thể sử_dụng được và phải chờ phần_mềm mở khóa mạng ra_đời thì bạn mới unlock ( mở khóa mạng ) và sử_dụng được lại máy .
+còn iphone quốc_tế sẽ không_bao_giờ bị khóa mạng khi bạn update tất_cả các phiên_bản mới
+- apple lại bán iphone quốc_tế và khóa mạng vì những nguyên_nhân sau :
++ một_số quốc_gia luật_pháp không cho_phép ép_buộc khách_hàng sử_dụng 1 mạng cố_định
++ việc bán iphone phiên_bản lock ( khóa mạng ) sẽ ràng_buộc khách_hàng sử_dụng dịch_vụ mạng và dịch_vụ mạng mỗi tháng khách_hàng thanh_toán cho nhà mạng mới đem lại khoảng lợi_nhuận kếch_xù cho nhà mạng và apple
+- iphone quốc_tế sẽ bán ở 1 số nước sau đây : pháp , úc , ý , singapore , hongkong , việt nam ... . và một_số nước nữa
+lưu_ý : vẫn có 1 số nước vừa có bán iphone quốc_tế và iphone lock ( khóa mạng ) đồng_thời 1 lúc
+- cách nhận_biết iphone quốc_tế và lock ( khóa mạng ) :
++ để nhận_biết iphone quốc_tế thì bạn hãy cắm iphone vào phần_mềm itunes trên máy_tính và tiến_hành cài_đặt bất_kỳ 1 phiên_bản phần_mềm cho iphone ( không phân_biệt phiên_bản phần_mềm mới hay cũ ) .
+sau khi cài_đặt xong bạn bỏ 1 sim khác nhà mạng bán iphone vào ( bỏ bất_kỳ sim nhà mạng nào nhưng trừ sim của nhà mạng bán iphone ) để itunes kích_hoạt máy , nếu itunes thông_báo kích_hoạt máy và hiện lên sóng của nhà mạng ngay_lập_tức thì máy đó là quốc_tế , còn nếu bạn đã bỏ sim vào nhưng itunes không kích_hoạt máy thì máy đó là máy lock ( khóa mạng ) .
+đó là cách kiểm_tra chính_xác nhất mà không_bao_giờ sai .
++ ngoài_ra bạn có_thể kiểm_tra trong phần model máy nếu đuôi của model máy là za thì máy đó của singapore và đó là quốc_tế , máy đó đuôi là zp thì máy đó là của hongkong và đó là máy quốc_tế ... . nhưng việc này đòi_hỏi bạn phải có kiến_thức về za , zp trước là gì , cách kiểm_tra này đòi_hỏi người kiểm_tra phải có kinh_nghiệm ( không dành cho người mới biết )
+lưu_ý : tại 1 số nước vừa bán iphone quốc_tế mà vừa bán iphone lock .
+khi bạn mua 1 máy lock và sau đó nếu bạn muốn kích_hoạt thành máy quốc_tế thì thanh_toán chi_phí cho nhà mạng và máy bạn sẽ trở_thành máy quốc_tế .
+đọc đến đây thì hẳn một_số bạn sẽ có ý_nghĩ là iphone quốc_tế chắc_hẳn là sẽ tốt hơn iphone lock .
+điều đó chỉ đúng 1 phần vì iphone quốc_tế sẽ dễ xài hơn vì nó không bị khóa mạng và dễ_dàng update lên phiên_bản mới so với bản lock
+- iphone quốc_tế và iphone lock không khác_nhau 1 chi_tiết nào cho_dù 1 con ốc_vít và cả 2 máy đó đều sản_xuất từ 1 nhà_máy iphone của apple .
+apple chỉ quản_lý dữ_liệu về imei của máy trên kho dử liệu của họ .
+khi bạn dùng itunes update phần_mềm thì nếu máy bạn là máy lock thì itunes sẽ khóa máy lại , và nếu máy bạn là máy quốc_tế ( đã có dử liệu imei trong kho của apple là máy quốc_tế ) thì itunes sẽ kích_hoạt máy cho bạn thành có sóng .
+như_vậy hoàn_toàn không có bất_kỳ khác_biệt về linh_kiện bên trong iphone lock và quốc_tế
+vd thực_tế luôn : nếu bạn mua máy iphone lock của viettel và chỉ có_thể sữ dụng sim của viettel thì máy đó là máy lock , còn sau đó bạn cầm máy lên viettel và đóng cho viettel 599.000 vnd thì máy đó sẽ trở_thành quốc_tế mà viettel không_bao_giờ đổi máy khác cho bạn vì họ chỉ cần số imei của máy để kích_hoạt iphone thành quốc_tế .
+( tại một_số nước giá kích_hoạt quốc_tế khác_nhau chứ không phải là 599.000 vnd như tại việt nam , phí kích_hoạt quốc_tế chính là khoản tiền chênh_lệch apple có_thể dễ_dàng thu của bạn để kiếm lời mà cho_dù bạn biết rõ vậy nhưng vẫn trả tiền cho apple , chỉ bằng 1 động_tác là lưu số imei apple đã có_thể thu tiền_của bạn )
+lưu_ý : tại mỹ không có bán iphone quốc_tế , nếu bạn mua iphone tại mỹ không cần hợp_đồng mạng ràng_buộc nhưng máy đó vẫn là máy khóa mạng .
+rất nhiều bạn hiểu sai về máy iphone mua không cần hợp_đồng tại mỹ là máy quốc_tế
+- môt số trường_hợp mua máy bảo_hành tại một_số nước có bán máy quốc_tế mặc_dù model trong máy của mỹ nhưng vẫn là máy quốc_tế vì apple phải kích_hoạt máy đó lại thành quốc để trả lại 1 máy quốc_tế mà khách_hàng đã mua tại nước có bán máy quốc_tế )
+một_số bạn có máy iphone x mua chẳng may không unlock được thì hay thắc_mắc rằng khi nào máy iphone x unlock được ? ( ở đây ta hiểu unlock được bằng phần_mềm nhé , không can_thiệp bằng phần_cứng hay sim ghép )
+- iphone unlock được là tùy vào phiên_bản phần_mềm nạp sẵn trong máy , nếu bạn mua iphone nào_đó phiên_bản phần_mềm trong máy càng cũ thì khả_năng unlock được càng cao .
+ví_dụ : cùng là 1 máy iphone 4 hiện_tại hôm_nay 17-04-2011 nếu bạn có máy lock chạy phiên_bản phần_mềm trong máy dưới 4.1 ( không được cao hơn và bằng 4.1 ) thì sẽ không unlock được bằng phần_mềm , còn nếu bạn có máy iphone 4 chạy từ 4.1 trở_lên thì không unlock được bằng phần_mềm .
+- máy iphone sẽ unlock được khi nhà_sản_xuất apple bán được số_lượng iphone như hãng mong_muốn thì lúc đó sẽ tung ra phần_mềm unlock ( thông_qua hacker ) vì_thế khi nào thì chỉ có nhà_sản_xuất mới biết .
+câu_hỏi đó thật tế không có câu trả_lời chính_xác .
+thông_thường người bán máy chưa unlock được sẽ nói r

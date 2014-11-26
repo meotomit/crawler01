@@ -1,0 +1,4 @@
+2014-11-27 00:27:23,533	4800  	DEBUG 	CRAWLER	loading stop words ...
+2014-11-27 00:27:23,533	4800  	DEBUG 	CRAWLER	loaded stop words, size = 0
+2014-11-27 00:27:23,799	4800  	INFO  	CRAWLER	------------------------------------
+2014-11-27 00:27:23,799	4800  	INFO  	CRAWLER	http://kinhdoanh.vnexpress.net/tin-tuc/tien-cua-toi/12-trieu-co-the-kinh-doanh-quan-an-vat-via-he-3095320.html

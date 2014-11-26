@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<corpus id="Mon Jul 09 10:25:53 ICT 2012">
+    <body>
+        <s>
+            <w t="word">toi</w>
+            <w t="word">thich</w>
+            <w t="word">con</w>
+            <w t="word">nay</w>
+            <w t="ponctuation">,</w>
+            <w t="word">man</w>
+            <w t="word">hinh</w>
+            <w t="word">rat</w>
+            <w t="word">dep</w>
+        </s>
+        <s>
+            <w t="word">tôi</w>
+            <w t="word">thích</w>
+            <w t="word">con</w>
+            <w t="word">này</w>
+            <w t="ponctuation">,</w>
+            <w t="word">màn hình</w>
+            <w t="word">rất</w>
+            <w t="word">đẹp</w>
+        </s>
+    </body>
+</corpus>

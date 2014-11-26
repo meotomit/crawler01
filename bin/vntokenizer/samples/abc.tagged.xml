@@ -1,0 +1,23 @@
+<doc>
+	<s>
+		<w pos="N">toi</w>
+		<w pos="V">thich</w>
+		<w pos="N">con</w>
+		<w pos="P">nay</w>
+		<w pos=",">,</w>
+		<w pos="V">man</w>
+		<w pos="N">hinh</w>
+		<w pos="V">rat</w>
+		<w pos="N">dep</w>
+	</s>
+	<s>
+		<w pos="P">tôi</w>
+		<w pos="V">thích</w>
+		<w pos="N">con</w>
+		<w pos="P">này</w>
+		<w pos=",">,</w>
+		<w pos="N">màn hình</w>
+		<w pos="R">rất</w>
+		<w pos="A">đẹp</w>
+	</s>
+</doc>

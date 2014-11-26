@@ -15,11 +15,11 @@ Created on Oct 25, 2014
 
 @author: phuckx
 '''
-#import logging
+import logging
 
-FORMATER = '[%(asctime)-15s] - %(message)s'
-#FORMATER = '%(asctime)s\t%(process)-6d\t%(levelname)-6s\t%(name)s\t%(message)s'
-#logging.basicConfig(level=logging.DEBUG, format=FORMATER,)
+#FORMATER = '[%(asctime)-15s] - %(message)s'
+FORMATER = '%(asctime)s\t%(process)-6d\t%(levelname)-6s\t%(name)s\t%(message)s'
+logging.basicConfig(level=logging.DEBUG, format=FORMATER,)
 
 QUEUE_URL = 'QUEUE_URL'
 
@@ -49,7 +49,7 @@ if __name__ == '__main__':
                     
                     links = siteObj.getLinks(cateUrl)
                     for link in links:
-                        print link
+                        logging.info(link)
                         urlInfo = {'className' : className, 'cateId' : cateId, 'cateUrl' : cateUrl, 'url' : link}
                         content = json.dumps(urlInfo)
                         #Push to queue
