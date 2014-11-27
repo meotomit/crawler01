@@ -1,0 +1,232 @@
+# 1 - Nông nghiệp
+nongnghiep.vn
+	http://nongnghiep.vn/nongnghiepvn/vi-vn/15/1-thoi-su.html
+	http://nongnghiep.vn/nongnghiepvn/vi-vn/18/7-khuyen-nong.html
+	http://nongnghiep.vn/nongnghiepvn/vi-vn/15/22-nghe-viec.html
+	http://nongnghiep.vn/nongnghiepvn/vi-vn/15/21-thoi-vu-dich-benh.html
+# 2 - Kiến trúc & xây dựng
+			
+
+# 3 - Kinh tế & tài chính
+vietnamnet
+	http://vietnamnet.vn/vn/kinh-te/
+	http://vietnamnet.vn/vn/kinh-te/tai-chinh/
+	http://vietnamnet.vn/vn/kinh-te/thi-truong/
+vnexpress
+	http://kinhdoanh.vnexpress.net/
+	http://kinhdoanh.vnexpress.net/tin-tuc/hang-hoa/
+	http://kinhdoanh.vnexpress.net/tin-tuc/hang-hoa/san-pham-moi/
+	http://kinhdoanh.vnexpress.net/tin-tuc/hang-hoa/khuyen-mai/
+	http://kinhdoanh.vnexpress.net/tin-tuc/doanh-nghiep/
+	http://kinhdoanh.vnexpress.net/tin-tuc/ebank/
+	http://kinhdoanh.vnexpress.net/tin-tuc/tien-cua-toi/
+	http://kinhdoanh.vnexpress.net/tin-tuc/chung-khoan/
+	http://kinhdoanh.vnexpress.net/tin-tuc/bat-dong-san/
+	http://kinhdoanh.vnexpress.net/tin-tuc/quoc-te/
+dantri.com.vn
+	http://dantri.com.vn/kinh-doanh.htm
+	http://dantri.com.vn/kinh-doanh/thi-truong/trang-1.htm
+	http://dantri.com.vn/kinh-doanh/tai-chinh-dau-tu/trang-1.htm
+	http://dantri.com.vn/kinh-doanh/doanh-nghiep/trang-1.htm
+	
+	http://dantri.com.vn/kinh-doanh/bao-ve-ntd/trang-1.htm
+	http://dantri.com.vn/kinh-doanh/quoc-te/trang-1.htm
+	http://dantri.com.vn/kinh-doanh/nha-dat/trang-1.htm
+	http://dantri.com.vn/kinh-doanh/gia-ca/trang-1.htm
+# 4 - Môi trường
+vietnamnet
+		http://vietnamnet.vn/vn/khoa-hoc/moi-truong/
+dantri.com.vn
+	http://dantri.com.vn/xa-hoi/moi-truong/trang-1.htm
+# 5 - Pháp luật & an ninh
+vnexpress
+	http://vnexpress.net/tin-tuc/phap-luat/
+	http://vnexpress.net/tin-tuc/phap-luat/ho-so-pha-an
+	http://vnexpress.net/tin-tuc/phap-luat/tu-van
+nongnghiep
+	http://nongnghiep.vn/nongnghiepvn/vi-vn/15/15-phap-luat.html
+dantri.com.vn
+	http://dantri.com.vn/phap-luat.htm
+	
+# 6 - Đời sống & nghệ thuật & giải trí
+vietnamnet
+	http://vietnamnet.vn/vn/doi-song/gia-dinh/
+	http://vietnamnet.vn/vn/doi-song/song-la/
+vnexpress
+	http://giaitri.vnexpress.net/
+	http://giaitri.vnexpress.net/tin-tuc/gioi-sao
+	http://giaitri.vnexpress.net/tin-tuc/thoi-trang
+	http://giaitri.vnexpress.net/tin-tuc/lam-dep
+	http://giaitri.vnexpress.net/tin-tuc/phim
+	http://giaitri.vnexpress.net/tin-tuc/truyen-hinh
+	http://giaitri.vnexpress.net/tin-tuc/sach
+	http://giaitri.vnexpress.net/tin-tuc/nhac
+	http://giaitri.vnexpress.net/tin-tuc/san-khau-my-thuat
+	http://giaitri.vnexpress.net/tin-tuc/cong-dong
+	http://video.vnexpress.net/giai-tri
+	http://doisong.vnexpress.net/
+	http://doisong.vnexpress.net/tin-tuc/nhip-song
+	http://doisong.vnexpress.net/tin-tuc/me-va-be
+	http://doisong.vnexpress.net/tin-tuc/gioi-tinh
+	http://doisong.vnexpress.net/tin-tuc/noi-tro
+nongnghiep
+	http://nongnghiep.vn/nongnghiepvn/vi-vn/15/27-giai-tri.html
+dantri
+	http://dantri.com.vn/xa-hoi/doi-song/trang-1.htm
+	http://dantri.com.vn/giai-tri.htm
+	http://dantri.com.vn/giai-tri/sao-viet/trang-1.htm
+	http://dantri.com.vn/giai-tri/hollywood/trang-1.htm
+	http://dantri.com.vn/giai-tri/chau-a/trang-1.htm
+	http://dantri.com.vn/giai-tri/thoi-trang/trang-1.htm
+	http://dantri.com.vn/giai-tri/xem-an-choi/trang-1.htm
+	
+# 7 - Tình yêu & hôn nhân
+vnexpress
+	http://doisong.vnexpress.net/tin-tuc/gia-dinh
+dantri
+	http://dantri.com.vn/tinh-yeu-gioi-tinh.htm
+	http://dantri.com.vn/tinh-yeu-gioi-tinh/tinh-yeu/trang-1.htm
+	http://dantri.com.vn/tinh-yeu-gioi-tinh/gia-dinh/trang-1.htm
+	http://dantri.com.vn/tinh-yeu-gioi-tinh/goc-tam-hon/trang-1.htm
+			
+# 8 - Y học & sức khỏe
+vietnamnet
+	http://vietnamnet.vn/vn/khoa-hoc/suc-khoe-gioi-tinh/
+	http://vietnamnet.vn/vn/doi-song/suc-khoe/
+nongnghiep
+	http://nongnghiep.vn/nongnghiepvn/vi-vn/15/9-gia-dinh-suc-khoe.html
+	http://nongnghiep.vn/nongnghiepvn/vi-vn/15/14-tam-su-voi-co-da-huong.html
+vnexpress
+	http://doisong.vnexpress.net/tin-tuc/suc-khoe
+dantri
+	http://dantri.com.vn/suc-khoe.htm
+	http://dantri.com.vn/suc-khoe/kien-thuc-gioi-tinh/trang-1.htm
+	http://dantri.com.vn/suc-khoe/tu-van/trang-1.htm
+# 9 - Chính trị & quân sự
+vietnamnet
+	http://vietnamnet.vn/vn/chinh-tri/
+	http://vietnamnet.vn/vn/chu-quyen-hoang-sa-truong-sa/
+	http://vietnamnet.vn/vn/thoi-su-quoc-hoi/
+	http://vietnamnet.vn/vn/thoi-su-quoc-hoi/
+	http://vietnamnet.vn/vn/chinh-tri/sua-hien-phap/
+	http://vietnamnet.vn/vn/chinh-tri/chong-tham-nhung/
+	http://vietnamnet.vn/vn/chinh-tri/tien-luong/	
+dantri.com.vn
+	http://dantri.com.vn/xa-hoi/chinh-tri/trang-1.htm
+# 10- Khoa học
+vietnamnet
+		http://vietnamnet.vn/vn/khoa-hoc/
+		http://vietnamnet.vn/vn/khoa-hoc/cong-nghe/
+		http://vietnamnet.vn/vn/khoa-hoc/moi-truong/
+		http://vietnamnet.vn/vn/khoa-hoc/suc-khoe-gioi-tinh/
+		http://vietnamnet.vn/vn/khoa-hoc/kham-pha/
+vnexpress
+	http://vnexpress.net/tin-tuc/khoa-hoc
+	http://vnexpress.net/tin-tuc/khoa-hoc/moi-truong
+	http://vnexpress.net/tin-tuc/khoa-hoc/ky-thuat-moi
+	http://vnexpress.net/tin-tuc/khoa-hoc/hoi-dap
+	http://vnexpress.net/tin-tuc/khoa-hoc/chuyen-la
+# 11- Xã hội & văn hóa & giáo dục
+vietnamnet
+	http://vietnamnet.vn/vn/xa-hoi/
+	http://vietnamnet.vn/vn/xa-hoi/thoi-su/
+	http://vietnamnet.vn/vn/xa-hoi/phap-luat/
+	http://vietnamnet.vn/vn/van-hoa/
+	http://vietnamnet.vn/vn/van-hoa/van-de-nong/
+	http://vietnamnet.vn/vn/van-hoa/chung-toi-chon/
+	http://vietnamnet.vn/vn/van-hoa/phim/
+	http://vietnamnet.vn/vn/van-hoa/xem-nghe-choi/
+	http://vietnamnet.vn/vn/van-hoa/nhac/
+	http://vietnamnet.vn/vn/van-hoa/phat-ngon/
+vnexpress
+	http://vnexpress.net/tin-tuc/giao-duc
+	http://vnexpress.net/tin-tuc/giao-duc/du-hoc
+	http://vnexpress.net/tin-tuc/giao-duc/tuyen-sinh
+	http://vnexpress.net/tin-tuc/giao-duc/tu-van
+nongnghiep
+	http://nongnghiep.vn/nongnghiepvn/vi-vn/15/26-van-hoa.html
+	http://nongnghiep.vn/nongnghiepvn/vi-vn/15/28-giao-duc.html
+dantri.com.vn
+	http://dantri.com.vn/xa-hoi.htm
+	http://dantri.com.vn/giao-duc-khuyen-hoc.htm
+	http://dantri.com.vn/giao-duc-khuyen-hoc/tin-tuyen-sinh/trang-1.htm
+	http://dantri.com.vn/giao-duc-khuyen-hoc/khuyen-hoc/trang-1.htm
+	http://dantri.com.vn/giao-duc-khuyen-hoc/guong-sang/trang-1.htm
+	http://dantri.com.vn/giao-duc-khuyen-hoc/apollo-vlog/trang-1.htm
+	http://dantri.com.vn/van-hoa.htm
+	http://dantri.com.vn/van-hoa/doi-song-van-hoa/trang-1.htm
+	http://dantri.com.vn/van-hoa/san-khau-dan-gian/trang-1.htm
+	http://dantri.com.vn/van-hoa/du-lich-kham-pha/trang-1.htm
+	http://dantri.com.vn/van-hoa/van-hoc/trang-1.htm
+	http://dantri.com.vn/van-hoa/dien-anh/trang-1.htm
+	http://dantri.com.vn/van-hoa/am-nhac/trang-1.htm
+# 12- Thể thao
+vietnamnet
+		http://thethao.vietnamnet.vn/
+		http://thethao.vietnamnet.vn/fms/hau-truong/
+		http://thethao.vietnamnet.vn/fms/bong-da-quoc-te/
+		http://thethao.vietnamnet.vn/fms/tin-tuc-bong-da/
+		http://thethao.vietnamnet.vn/fms/cac-mon-khac/
+		http://thethao.vietnamnet.vn/fms/premier-league/
+		http://thethao.vietnamnet.vn/fms/la-liga/
+		http://thethao.vietnamnet.vn/fms/chuyen-ngoi-sao/
+		http://thethao.vietnamnet.vn/fms/ho-so/
+		http://thethao.vietnamnet.vn/fms/serie-a/
+		http://thethao.vietnamnet.vn/fms/bundesliga/
+		http://thethao.vietnamnet.vn/fms/champions-league/
+		http://thethao.vietnamnet.vn/fms/doi-tuyen-viet-nam/
+		http://thethao.vietnamnet.vn/fms/v-league/
+		http://thethao.vietnamnet.vn/fms/hang-nhat/
+		http://thethao.vietnamnet.vn/fms/bong-da-nu/
+		http://thethao.vietnamnet.vn/fms/cup-quoc-gia/
+		http://thethao.vietnamnet.vn/fms/chan-dung-phong-van/
+		http://thethao.vietnamnet.vn/fms/dua-xe/
+		http://thethao.vietnamnet.vn/fms/dien-kinh/
+		http://thethao.vietnamnet.vn/fms/cac-mon-khac/
+vnexpress
+	http://thethao.vnexpress.net/
+	http://thethao.vnexpress.net/tin-tuc/bong-da
+	http://thethao.vnexpress.net/tin-tuc/bong-da/bong-da-trong-nuoc
+	http://thethao.vnexpress.net/tin-tuc/tennis
+	http://thethao.vnexpress.net/tin-tuc/cac-mon-khac
+	http://thethao.vnexpress.net/tin-tuc/hau-truong
+nongnghiep
+	http://nongnghiep.vn/nongnghiepvn/vi-vn/15/29-the-thao.html
+dantri.com.vn
+	http://dantri.com.vn/the-thao.htm
+	http://dantri.com.vn/the-thao/the-thao-trong-nuoc/trang-1.htm
+	http://dantri.com.vn/the-thao/the-thao-quoc-te/trang-1.htm
+	http://dantri.com.vn/the-thao/bong-da-trong-nuoc/trang-1.htm
+	http://dantri.com.vn/the-thao/bong-da-chau-au/trang-1.htm
+	http://dantri.com.vn/the-thao/bong-da-anh/trang-1.htm
+	http://dantri.com.vn/the-thao/bong-da-tbn/trang-1.htm
+	http://dantri.com.vn/the-thao/tennis/trang-1.htm
+# 13- Công nghệ
+vietnamnet	
+	http://vietnamnet.vn/vn/khoa-hoc/cong-nghe/
+	http://vietnamnet.vn/vn/cong-nghe-thong-tin-vien-thong/the-gioi-so/
+	http://vietnamnet.vn/vn/cong-nghe-thong-tin-vien-thong/vien-thong/
+	http://vietnamnet.vn/vn/cong-nghe-thong-tin-vien-thong/san-pham/
+vnexpress
+	http://sohoa.vnexpress.net/
+	http://sohoa.vnexpress.net/tin-tuc/san-pham
+	http://sohoa.vnexpress.net/danh-gia
+	http://sohoa.vnexpress.net/tin-tuc/doi-song-so
+	http://sohoa.vnexpress.net/tin-tuc/kinh-nghiem
+	http://sohoa.vnexpress.net/tin-tuc/cong-dong
+	http://sohoa.vnexpress.net/chu-de
+	http://sohoa.vnexpress.net/tin-tuc/anh-video
+	
+# 14- Phương tiện (ô tô & xe máy)
+vietnamnet
+	http://vietnamnet.vn/vn/chuyen-trang/oto-xemay/
+vnexpress
+	http://vnexpress.net/tin-tuc/oto-xe-may/
+	http://vnexpress.net/tin-tuc/oto-xe-may/thi-truong
+dantri
+	http://dantri.com.vn/o-to-xe-may.htm
+	http://dantri.com.vn/o-to-xe-may/thi-truong-xe/trang-1.htm
+	http://dantri.com.vn/o-to-xe-may/van-hoa-xe/trang-1.htm
+	http://dantri.com.vn/o-to-xe-may/tu-van-xe/trang-1.htm
+	http://dantri.com.vn/o-to-xe-may/dua-xe/trang-1.htm
+	http://dantri.com.vn/o-to-xe-may/gia-xe/trang-1.htm

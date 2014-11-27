@@ -30,10 +30,15 @@ class VnTokenizer(object):
         '''
         pass
     def loadStopwords(self):
+        stopwords = []
         stopwordsFile = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/../data/stopwords.txt')
         f = codecs.open(stopwordsFile, encoding='utf-8', mode='r')
-        content = f.read()
-        stopwords = content.split('\r\n')
+        lines = f.readlines()
+        for line in lines:
+            if len(line) > 1:
+                line = line.strip()
+                line = line.replace(' ', '_')
+                stopwords.append(line.encode('utf-8'))
         return stopwords
         
     def tokenize(self, inputContent):
@@ -76,9 +81,11 @@ class VnTokenizer(object):
 if __name__ == '__main__':
     obj = VnTokenizer()
     # print obj.CMD_PATH
-    content = obj.tokenize('tai sao lai the nhi')
-    print content
+    #content = obj.tokenize('tai sao lai the nhi')
+    #print content
     #words = content.split(',')
     #print words
-    print obj.loadStopwords()
+    w = obj.loadStopwords()
+    for i in w:
+        print i
     
