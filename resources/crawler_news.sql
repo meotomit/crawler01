@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `site_content` (
   `content` text COLLATE utf8_unicode_ci,
   `word_1` text COLLATE utf8_unicode_ci,
   `word_2` text COLLATE utf8_unicode_ci,
+  `tf` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `cate_id` (`cate_id`),
   KEY `site` (`site`)
