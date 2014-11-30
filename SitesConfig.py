@@ -71,8 +71,7 @@ SITES = [
 			,{'cate_id' : 14, 'class' : 'vnexpress_net', 'url': 'http://vnexpress.net/tin-tuc/oto-xe-may'}
 			
 		] 
-	}
-	,{
+	},{
 		'dantri.com.vn' : [
 			# 1. nong nghiep
 			{'cate_id' : 1, 'class' : 'dantri_com_vn', 'url': ''}
@@ -80,8 +79,17 @@ SITES = [
 			# 2. kien truc - xay dung 
 			
 			# 3 - Kinh tế & tài chính
-			
+			,{'cate_id' : 3, 'class' : 'dantri_com_vn', 'url': 'http://dantri.com.vn/kinh-doanh.htm'}
+			,{'cate_id' : 3, 'class' : 'dantri_com_vn', 'url': 'http://dantri.com.vn/kinh-doanh/thi-truong/trang-1.htm'}
+			,{'cate_id' : 3, 'class' : 'dantri_com_vn', 'url': 'http://dantri.com.vn/kinh-doanh/tai-chinh-dau-tu/trang-1.htm'}
+			,{'cate_id' : 3, 'class' : 'dantri_com_vn', 'url': 'http://dantri.com.vn/kinh-doanh/doanh-nghiep/trang-1.htm'}
+			,{'cate_id' : 3, 'class' : 'dantri_com_vn', 'url': 'http://dantri.com.vn/kinh-doanh/bao-ve-ntd/trang-1.htm'}
+			,{'cate_id' : 3, 'class' : 'dantri_com_vn', 'url': 'http://dantri.com.vn/kinh-doanh/quoc-te/trang-1.htm'}
+			,{'cate_id' : 3, 'class' : 'dantri_com_vn', 'url': 'http://dantri.com.vn/kinh-doanh/nha-dat/trang-1.htm'}
+			,{'cate_id' : 3, 'class' : 'dantri_com_vn', 'url': 'http://dantri.com.vn/kinh-doanh/gia-ca/trang-1.htm'}
+
 			# 4 - Môi trường
+			,{'cate_id' : 4, 'class' : 'dantri_com_vn', 'url': 'http://dantri.com.vn/xa-hoi/moi-truong/trang-1.htm'}
 			
 			# 5 - Pháp luật & an ninh
 			,{'cate_id' : 5, 'class' : 'dantri_com_vn', 'url': ''}

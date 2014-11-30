@@ -1,3 +1,5 @@
+…
+...
 a ha
 a-lô
 à ơi
@@ -158,6 +160,7 @@ chúng ta
 chúng tôi
 chứ
 chứ lị
+có
 có chăng là
 có dễ
 có vẻ
@@ -206,6 +209,7 @@ do vì
 do đó
 do vậy
 dở chừng
+dù
 dù cho
 dù rằng
 duy
@@ -223,6 +227,11 @@ dưới
 đành đạch
 đánh đùng
 đáo để
+đây
+đó
+km
+là
+m2
 nấy
 nên chi
 nền
@@ -288,6 +297,7 @@ những
 những ai
 những như
 nhược bằng
+nào
 nó
 nóc
 nọ
@@ -295,6 +305,7 @@ nổi
 nớ
 nữa
 nức nở
+mà
 oai oái
 oái
 ô hay
@@ -302,6 +313,8 @@ oái
 ô kê
 ô kìa
 ồ
+ố
+ổ
 ôi chao
 ôi thôi
 ối dào
@@ -314,6 +327,7 @@ oái
 ơ kìa
 ờ
 ớ
+ở
 ơi
 phải
 phải chi

@@ -18,6 +18,8 @@ import logging
 import traceback  
 import os
 
+import json
+
 '''
     Parse URL 
     Created on Oct 25, 2014
@@ -32,6 +34,7 @@ import logging.handlers
 formatter = logging.Formatter('%(asctime)s\t%(process)-6d\t%(levelname)-6s\t%(name)s\t%(message)s')
 
 logger = logging.getLogger('CRAWLER')
+
 logger.setLevel(logging.DEBUG)
 file_handler = logging.handlers.RotatingFileHandler('logs/log.txt', 'a', 5000000, 5) # 5M - 5 files
 file_handler.setFormatter(formatter)
@@ -40,7 +43,7 @@ console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.DEBUG)
 console_handler.setFormatter(formatter)
 
-logger.addHandler(file_handler) 
+#logger.addHandler(file_handler) 
 logger.addHandler(console_handler)
 
 logging.getLogger('pika').setLevel(logging.INFO)
@@ -54,6 +57,9 @@ from DB import DB
 import redis
 rc = redis.Redis('localhost')
 
+'''
+Load các URL đã crawler vào Redis để cache
+'''
 def loadURL2Redis():
     query1 = "select id, site, url from visited_url"
     db = DB()   
@@ -66,7 +72,10 @@ def loadURL2Redis():
         url = row['url']    
         rc.sadd(site, url)
     logger.info('Load : ' + str(len(rows)) + ' to Redis')
-           
+
+'''
+    Insert URL đã crawl được vào database và Redis
+'''           
 def insertUrl(site, url):
     query = "insert into visited_url (site, url) values( '%s', '%s') " % (site, url)
     logger.info(query)
@@ -79,7 +88,9 @@ def insertUrl(site, url):
     if rc.sadd(site, url) == 0:
         logger.error("Insert URL " + url + " to Redis --> Failed")
     
-    
+'''
+    Ktra một URL đã được crawl hay chưa bằng cách check trong Redis
+'''    
 def existURL(siteName, url):
     res = True
     if rc.sismember(siteName, url) == 0:
@@ -95,17 +106,11 @@ if __name__ == '__main__':
     db = DB()
 
     tokenizer = VnTokenizer()
+    print 'STOP WORDS: ' + str(len(tokenizer.STOP_WORDS))
     
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
     channel.queue_declare(queue=QUEUE_URL, durable=True)
-    
-    STOP_WORDS = []
-    SPECIAL_CHARS = '. , : " ; / [ ] \' ~ ? ~ @ # $ % ^ & * ( ) < > = + '.split()
-    # load stopword
-    logger.info('loading stop words ...')
-    STOP_WORDS = tokenizer.loadStopwords()
-    logger.info('loaded stop words, size = ' + str(len(STOP_WORDS)))
     
     #channel.queue_declare(queue=QUEUE_ANTI_DUPLICATE, durable=True)    
     # Get content from Queue    
@@ -124,6 +129,8 @@ if __name__ == '__main__':
             siteObj = eval(initCommand)
             logger.info(url)
             
+            termFrequencyDict = {} 
+            
             #TODO: check URL da dc crawl hay chua
             if not existURL(className, url):
                 content = siteObj.getPageDetail(url)
@@ -132,12 +139,32 @@ if __name__ == '__main__':
                     tokenContent = tokenizer.tokenize(content)
                     words = tokenContent.split()
                     filterWords = []
-                    for word in words:                
+                    for word in words:     
+                        word = word.strip()
                         #check stop word
-                        word = lower(word)
-                        if word not in SPECIAL_CHARS and word not in STOP_WORDS:
-                            filterWords.append(word)                
-                    # write file
+                        
+                        # change to lower case
+                        if isinstance(word, str): 
+                            word = unicode(word, 'utf-8').lower().encode('utf-8')
+                        else:
+                            word = word.lower()
+                                                                    
+                        if not tokenizer.isStopWord(word):
+                            filterWords.append(word)
+                            
+                            # check term freq
+                            #word = word.encode('utf-8')
+                            #print type(word)
+                            if termFrequencyDict.has_key(word):
+                                curCounter = termFrequencyDict.get(word)
+                                termFrequencyDict[word] = curCounter + 1
+                            else:
+                                termFrequencyDict[word] = 1
+                    #print json.dumps(termFrequency, sort_keys=True, indent=4, separators=(',', ': '))
+                    termFrequencyJson = json.dumps(termFrequencyDict, ensure_ascii=False, encoding='utf-8')
+                    logger.info(termFrequencyJson)
+                    
+                    # join --> string
                     filterContent = ' '.join(filterWords)
                     
                     #import pdb
@@ -146,8 +173,8 @@ if __name__ == '__main__':
                     tokenContent = tokenContent.replace("'", "\\'")
                     filterContent = filterContent.replace("'", "\\'")
                     
-                    query = "INSERT INTO site_content (cate_id, site, url, content, word_1, word_2) values (%s, '%s', '%s', '%s', '%s', '%s')" % \
-                            (str(cateId), className.encode('utf-8'), url.encode('utf-8'), content.encode('utf-8'), tokenContent, filterContent)
+                    query = "INSERT INTO site_content (cate_id, site, url, content, word_1, word_2, tf) values (%s, '%s', '%s', '%s', '%s', '%s', '%s')" % \
+                            (str(cateId), className.encode('utf-8'), url.encode('utf-8'), content.encode('utf-8'), tokenContent, filterContent, termFrequencyJson)
                     cur = db.cursor()
                     cur.execute(query)
                     db.conn.commit()

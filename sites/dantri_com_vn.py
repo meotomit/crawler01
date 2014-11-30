@@ -32,7 +32,7 @@ class dantri_com_vn(ISite):
             for link in links:
                 if link.has_attr('href'):                
                     href = link['href']
-                    print href
+                    #print href
                     if href.startswith(categoryPrefix):
                         tmp = self.filterUrl(href)
                         if tmp and (tmp not in results):                        
@@ -60,7 +60,7 @@ class dantri_com_vn(ISite):
             text = re.sub(u' \(Dân trí\) \- ', '', text)
             return text
         else :
-            print 'can not parse'
+            print 'Can NOT parse URL: ' + pageUrl 
             return None
 
 if __name__ == '__main__':

@@ -18,8 +18,28 @@ Created on Oct 25, 2014
 import logging
 
 #FORMATER = '[%(asctime)-15s] - %(message)s'
-FORMATER = '%(asctime)s\t%(process)-6d\t%(levelname)-6s\t%(name)s\t%(message)s'
-logging.basicConfig(level=logging.DEBUG, format=FORMATER,)
+#FORMATER = '%(asctime)s\t%(process)-6d\t%(levelname)-6s\t%(name)s\t%(message)s'
+#logging.basicConfig(level=logging.DEBUG, format=FORMATER,)
+
+import logging.handlers
+formatter = logging.Formatter('%(asctime)s\t%(process)-6d\t%(levelname)-6s\t%(name)s\t%(message)s')
+
+logger = logging.getLogger('CRAWLER')
+
+logger.setLevel(logging.DEBUG)
+file_handler = logging.handlers.RotatingFileHandler('logs/crawl_url.txt', 'a', 5000000, 5) # 5M - 5 files
+file_handler.setFormatter(formatter)
+
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)
+console_handler.setFormatter(formatter)
+
+#logger.addHandler(file_handler) 
+logger.addHandler(console_handler)
+
+logging.getLogger('pika').setLevel(logging.INFO)
+logging.getLogger('pika.frame').setLevel(logging.INFO)
+
 
 QUEUE_URL = 'QUEUE_URL'
 
@@ -42,12 +62,14 @@ if __name__ == '__main__':
                 cateUrl = cate['url']
                 className = cate['class']
                 #logging.info("URL: " + cateUrl)
+                cateUrl = cateUrl.strip()
                 if len(cateUrl) > 0:                    
                     initCommand = className + "()"
                     siteObj = eval(initCommand)
-                    print siteObj
+                    #print siteObj
                     
                     links = siteObj.getLinks(cateUrl)
+                    logger.info('Total link: ' + str(len(links)) + ' in category: ' + cateUrl)
                     for link in links:
                         logging.info(link)
                         urlInfo = {'className' : className, 'cateId' : cateId, 'cateUrl' : cateUrl, 'url' : link}

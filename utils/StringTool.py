@@ -3,6 +3,11 @@ import re
 class StringTool :
     
     @staticmethod
+    def is_numeric(inputStr):
+        g_intRegex = re.compile(r"[-+]?\d+([\.,]\d+)?$")
+        return g_intRegex.match(str(inputStr).strip()) is not None
+    
+    @staticmethod
     def remove_diacritic(input):
         '''
         Accept a unicode string, and return a normal string (bytes in Python 3)

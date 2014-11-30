@@ -1,4 +1,20 @@
-2014-11-27 00:27:23,533	4800  	DEBUG 	CRAWLER	loading stop words ...
-2014-11-27 00:27:23,533	4800  	DEBUG 	CRAWLER	loaded stop words, size = 0
-2014-11-27 00:27:23,799	4800  	INFO  	CRAWLER	------------------------------------
-2014-11-27 00:27:23,799	4800  	INFO  	CRAWLER	http://kinhdoanh.vnexpress.net/tin-tuc/tien-cua-toi/12-trieu-co-the-kinh-doanh-quan-an-vat-via-he-3095320.html
+2014-11-29 10:21:27,882	4352  	INFO  	CRAWLER	Load URL --> Redis
+2014-11-29 10:21:27,974	4352  	INFO  	CRAWLER	select id, site, url from visited_url
+2014-11-29 10:22:20,256	3572  	INFO  	CRAWLER	Load URL --> Redis
+2014-11-29 10:22:20,262	3572  	INFO  	CRAWLER	select id, site, url from visited_url
+2014-11-29 10:22:20,273	3572  	INFO  	CRAWLER	Load : 15 to Redis
+2014-11-29 10:22:20,273	3572  	INFO  	CRAWLER	Load URL --> Redis ==> OK
+2014-11-29 10:22:20,780	3572  	INFO  	CRAWLER	loading stop words ...
+2014-11-29 10:22:20,785	3572  	INFO  	CRAWLER	loaded stop words, size = 598
+2014-11-29 10:22:21,040	3572  	INFO  	CRAWLER	------------------------------------
+2014-11-29 10:22:21,068	3572  	INFO  	CRAWLER	http://kinhdoanh.vnexpress.net/tin-tuc/bat-dong-san/250-nen-dat-dong-tang-long-da-co-chu-3109715.html
+2014-11-29 10:22:23,358	3572  	INFO  	CRAWLER	insert into visited_url (site, url) values( 'vnexpress_net', 'http://kinhdoanh.vnexpress.net/tin-tuc/bat-dong-san/250-nen-dat-dong-tang-long-da-co-chu-3109715.html') 
+2014-11-29 10:22:26,365	3572  	INFO  	CRAWLER	------------------------------------
+2014-11-29 10:22:26,367	3572  	INFO  	CRAWLER	http://kinhdoanh.vnexpress.net/tin-tuc/bat-dong-san/mo-ban-dot-cuoi-can-ho-thuoc-du-an-green-star-3109323.html
+2014-11-29 10:22:28,134	3572  	INFO  	CRAWLER	insert into visited_url (site, url) values( 'vnexpress_net', 'http://kinhdoanh.vnexpress.net/tin-tuc/bat-dong-san/mo-ban-dot-cuoi-can-ho-thuoc-du-an-green-star-3109323.html') 
+2014-11-29 10:22:31,137	3572  	INFO  	CRAWLER	------------------------------------
+2014-11-29 10:22:31,138	3572  	INFO  	CRAWLER	http://kinhdoanh.vnexpress.net/tin-tuc/bat-dong-san/30-000-dong-mot-m2-nha-xa-hoi-cho-thue-dau-tien-tai-ha-noi-3109184.html
+2014-11-29 10:22:33,470	3572  	INFO  	CRAWLER	insert into visited_url (site, url) values( 'vnexpress_net', 'http://kinhdoanh.vnexpress.net/tin-tuc/bat-dong-san/30-000-dong-mot-m2-nha-xa-hoi-cho-thue-dau-tien-tai-ha-noi-3109184.html') 
+2014-11-29 10:22:36,474	3572  	INFO  	CRAWLER	------------------------------------
+2014-11-29 10:22:36,476	3572  	INFO  	CRAWLER	http://kinhdoanh.vnexpress.net/tin-tuc/bat-dong-san/nha-thue-gia-hon-200-000-dong-cho-sinh-vien-sap-van-hanh-3105876.html
+2014-11-29 10:22:38,240	3572  	INFO  	CRAWLER	insert into visited_url (site, url) values( 'vnexpress_net', 'http://kinhdoanh.vnexpress.net/tin-tuc/bat-dong-san/nha-thue-gia-hon-200-000-dong-cho-sinh-vien-sap-van-hanh-3105876.html') 
