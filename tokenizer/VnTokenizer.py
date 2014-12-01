@@ -18,13 +18,15 @@ from utils.StringTool import StringTool
 
 import hashlib
 import time
+from tokenizer.ITokenizer import ITokenizer
+from platform import platform
 
-class VnTokenizer(object):
+class VnTokenizer(ITokenizer):
     '''
     classdocs
     '''
     
-    CMD_PATH = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/../bin/vntokenizer/vnTokenizer.bat')
+    CMD_PATH = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/../bin/vntokenizer/vnTokenizer.bat') 
     TEMP_DIR = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/../data/tmp')
     
 

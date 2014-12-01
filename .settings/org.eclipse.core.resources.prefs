@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//sites/dantri_com_vn.py=utf-8
 encoding//sites/nongnghiep_vn.py=utf-8
 encoding//sites/tuoitre_vn.py=utf-8
+encoding//sites/vietnamnet_vn.py=utf-8
 encoding//sites/vnexpress_net.py=utf-8
 encoding//tokenizer/ITokenizer.py=utf-8
 encoding//tokenizer/VnTokenizer.py=utf-8

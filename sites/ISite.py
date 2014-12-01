@@ -63,6 +63,8 @@ class ISite(object):
         # remove multi space
         content = re.sub('[ \t]+',' ', content)
         content = re.sub('[\r\n]+','\n', content)
+        if len(content) < 400:
+            return None
         return content
     
     def insertPost(self, conn, cateId, url, content):

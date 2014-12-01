@@ -27,7 +27,9 @@ SITES = [
 
 			# 3 - Kinh tế & tài chính
 			,{'cate_id' : 3, 'class' : 'vnexpress_net', 'url': 'http://kinhdoanh.vnexpress.net/tin-tuc/chung-khoan/', }
-			,{'cate_id' : 3, 'class' : 'vnexpress_net', 'url': 'http://kinhdoanh.vnexpress.net/tin-tuc/tien-cua-toi/'}
+			#,{'cate_id' : 3, 'class' : 'vnexpress_net', 'url': 'http://kinhdoanh.vnexpress.net/tin-tuc/chung-khoan/page/${1-10}.html', }
+			
+			,{'cate_id' : 3, 'class' : 'vnexpress_net', 'url': 'http://kinhdoanh.vnexpress.net/tin-tuc/tien-cua-toi/page/${1-10}.html'}
 			,{'cate_id' : 3, 'class' : 'vnexpress_net', 'url': 'http://kinhdoanh.vnexpress.net/tin-tuc/bat-dong-san/'}
 			,{'cate_id' : 3, 'class' : 'vnexpress_net', 'url': 'http://kinhdoanh.vnexpress.net/tin-tuc/hang-hoa/'}
 			,{'cate_id' : 3, 'class' : 'vnexpress_net', 'url': 'http://kinhdoanh.vnexpress.net/tin-tuc/doanh-nghiep/'}

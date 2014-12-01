@@ -14,15 +14,32 @@ class dantri_com_vn(ISite):
 
     def filterUrl(self, url):        
         url = ISite.filterUrl(self, url)
-        url = 'http://dantri.com.vn' + str(url)
-        return url
+        if url:
+            search = re.search("/trang-\d+\.htm", url)
+            if search: # neu la trang paging
+                return None
+            if url.find('dantri.com.vn') > 0:
+                return url
+            else:
+                url = 'http://dantri.com.vn' + str(url)
+                return url
+        else:
+            return None
     
     def getLinks(self, url):
         '''
             Lay danh sach cac trang chi tiet trong 1 trang chuyen muc
         '''
         results = []
-        categoryPrefix = url[20:-4] + '/' # http://dantri.com.vn/the-gioi.htm --> http://dantri.com.vn/the-gioi/
+        #import pdb
+        #pdb.set_trace()
+        match = re.search('/trang\-\d+\.htm', url)
+        categoryPrefix = url
+        if match:
+            categoryPrefix = re.sub('/trang\-\d+.htm', '/', url)
+            #categoryPrefix = url[:pos+1] #
+        else:
+            categoryPrefix = url[:-4] + '/' # http://dantri.com.vn/the-gioi.htm --> http://dantri.com.vn/the-gioi/
         
         html = self.getHtml(url)
         soup = BeautifulSoup(html)
@@ -32,11 +49,17 @@ class dantri_com_vn(ISite):
             for link in links:
                 if link.has_attr('href'):                
                     href = link['href']
+                    if href:
+                        #import pdb
+                        #pdb.set_trace()
+                        if href.find('dantri.com.vn') < 0:
+                            href = 'http://dantri.com.vn' + href
                     #print href
                     if href.startswith(categoryPrefix):
                         tmp = self.filterUrl(href)
-                        if tmp and (tmp not in results):                        
-                            results.append(tmp)
+                        if tmp and (tmp not in results):
+                            if tmp.find('xem-nhieu-nhat.htm') < 0:                        
+                                results.append(tmp)
         else :
             print 'Can NOT parse URL: ', url
         
@@ -57,8 +80,12 @@ class dantri_com_vn(ISite):
             text = mainContent.get_text().strip()
             
             text = self.filterContent(text)
-            text = re.sub(u' \(Dân trí\) \- ', '', text)
-            return text
+            if text:
+                text = re.sub(u' \(Dân trí\) \- ', '', text)
+                return text
+            else :
+                print 'Content size < 400 chars or can NOT filter content, URL : ' + pageUrl
+                return None
         else :
             print 'Can NOT parse URL: ' + pageUrl 
             return None
@@ -66,15 +93,16 @@ class dantri_com_vn(ISite):
 if __name__ == '__main__':
         obj = dantri_com_vn()
         
-        '''
+        
         # test get urls
         url = 'http://dantri.com.vn/the-gioi.htm'
         url = 'http://dantri.com.vn/kinh-doanh.htm'
-        url = 'http://dantri.com.vn/van-hoa.htm'     
+        #url = 'http://dantri.com.vn/van-hoa.htm'  
+        url = 'http://dantri.com.vn/giao-duc-khuyen-hoc/trang-2.htm'
         listLinks = obj.getLinks(url)
         for link in listLinks:
             print link        
-        '''
+        
     
         # Test get page detail
 #         url = 'http://kinhdoanh.vnexpress.net/tin-tuc/doanh-nghiep/khu-vui-choi-tre-em-thi-truong-3-ty-dola-3091745.html'

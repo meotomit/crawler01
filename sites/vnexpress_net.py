@@ -11,14 +11,19 @@ from sites.ISite import ISite
 
 from SitesConfig import SITES
 import traceback
-#import redis
-#import MySQLdb
-#from MySQLdb.cursors import DictCursor
-
+import re
 class vnexpress_net(ISite):
     
     SUFFIX_URL = '.html'
     
+    def filterUrl(self, url):
+        url = ISite.filterUrl(self, url)
+        if url:
+            search = re.search("/page/\d+\.html", url)
+            if search: # neu la trang paging
+                return None
+        return url
+        
     def getLinks(self, url):
         '''
             Lay danh sach cac trang chi tiet trong 1 trang chuyen muc
@@ -26,14 +31,20 @@ class vnexpress_net(ISite):
         results = []
         html = self.getHtml(url)
         
+        posPaging = url.find('/page/')
+        categoryPrefix = url
+        if posPaging > 1:
+            categoryPrefix = url[:posPaging+1] # http://dantri.com.vn/the-gioi.htm --> http://dantri.com.vn/the-gioi/
+        
         soup = BeautifulSoup(html)
         content = soup.find('div', {'id' : 'container'})
+        
         if content:
             links = content.findAll('a')
             for link in links:
                 if link.has_attr('href'):                
                     href = link['href']
-                    if href.startswith(url):
+                    if href.startswith(categoryPrefix):
                         tmp = self.filterUrl(href)
                         if tmp and (tmp not in results):             
                             results.append(tmp)
@@ -59,7 +70,11 @@ class vnexpress_net(ISite):
             text = mainContent.get_text().strip()
             
             text = self.filterContent(text)
-            return text
+            if text :
+                return text
+            else:
+                print 'Content size < 400 chars or can NOT filter content, URL : ' + pageUrl
+                return None
         else :
             print 'can not parse'
             return None
@@ -119,12 +134,8 @@ class vnexpress_net(ISite):
 '''        
 if __name__ == '__main__':
         obj = vnexpress_net()
-        while(True):
-            obj.run()
-            print 'Sleep in 10 mintues .....'
-            sleep(10*60) # sleep 10 minutes
         
-        '''
+        
         # test get urls
         url = 'http://vnexpress.net/tin-tuc/phap-luat'
         url = 'http://thethao.vnexpress.net/'
@@ -132,12 +143,13 @@ if __name__ == '__main__':
         url = 'http://doisong.vnexpress.net/'
         url = 'http://sohoa.vnexpress.net/'
         url = 'http://sohoa.vnexpress.net/tin-tuc/kinh-nghiem'
+        url = 'http://kinhdoanh.vnexpress.net/tin-tuc/tien-cua-toi/page/1.html'
         listLinks = obj.getLinks(url)
         for link in listLinks:
             print link
-        '''
+        
     
-        '''
+        
 
         # Test get page detail
 #         url = 'http://kinhdoanh.vnexpress.net/tin-tuc/doanh-nghiep/khu-vui-choi-tre-em-thi-truong-3-ty-dola-3091745.html'
@@ -148,7 +160,7 @@ if __name__ == '__main__':
         url = 'http://sohoa.vnexpress.net/tin-tuc/kinh-nghiem/cai-dat-zalo-tren-nokia-asha-503-2979309.html'
         mainContent = obj.getPageDetail(url)
         print mainContent
-        '''
+        
 
         print 'DONE'
 

@@ -43,6 +43,7 @@ logging.getLogger('pika.frame').setLevel(logging.INFO)
 
 QUEUE_URL = 'QUEUE_URL'
 
+import re
 
 if __name__ == '__main__':
     
@@ -51,7 +52,8 @@ if __name__ == '__main__':
     channel.queue_declare(queue=QUEUE_URL, durable=True)
     #channel.queue_declare(queue=QUEUE_ANTI_DUPLICATE, durable=True)
 
-        
+    MULTI_URL_REGEX = re.compile('.*?\$\{(\d+\-\d+)\}\.html')
+    
     for site in SITES:
         for siteName in site:
             #print '==========================='
@@ -63,24 +65,39 @@ if __name__ == '__main__':
                 className = cate['class']
                 #logging.info("URL: " + cateUrl)
                 cateUrl = cateUrl.strip()
-                if len(cateUrl) > 0:                    
+                if len(cateUrl) > 0:
+                    listCateUrls = []
+                    
+                    # check multi URL
+                    matches = MULTI_URL_REGEX.match(cateUrl)
+                    if matches:                        
+                        pageRangeStr = matches.group(1)
+                        pageRangeArr = pageRangeStr.split('-')
+                        for p in range(int(pageRangeArr[0]), int(pageRangeArr[1])):
+                            url = re.sub(r'\$\{\d+\-\d+\}', str(p), cateUrl)
+                            print url
+                            listCateUrls.append(url)
+                    else:
+                        listCateUrls.append(cateUrl)
+                                        
                     initCommand = className + "()"
                     siteObj = eval(initCommand)
                     #print siteObj
                     
-                    links = siteObj.getLinks(cateUrl)
-                    logger.info('Total link: ' + str(len(links)) + ' in category: ' + cateUrl)
-                    for link in links:
-                        logging.info(link)
-                        urlInfo = {'className' : className, 'cateId' : cateId, 'cateUrl' : cateUrl, 'url' : link}
-                        content = json.dumps(urlInfo)
-                        #Push to queue
-                        channel.basic_publish(exchange='',
-                                      routing_key=QUEUE_URL,
-                                      body=content,
-                                      properties=pika.BasicProperties(delivery_mode=2, # make message persistent
-                                 ))
-                    sleep(3)
+                    for tmpCateUrl in listCateUrls:
+                        links = siteObj.getLinks(tmpCateUrl)
+                        logger.info('Total link: ' + str(len(links)) + ' in category: ' + tmpCateUrl)
+                        for link in links:
+                            logging.info(link)
+                            urlInfo = {'className' : className, 'cateId' : cateId, 'cateUrl' : tmpCateUrl, 'url' : link}
+                            content = json.dumps(urlInfo)
+                            #Push to queue
+                            channel.basic_publish(exchange='',
+                                          routing_key=QUEUE_URL,
+                                          body=content,
+                                          properties=pika.BasicProperties(delivery_mode=2, # make message persistent
+                                     ))
+                        sleep(3)
                     #logging.info('-----------------------')
 
     #logging.info('DONE')
