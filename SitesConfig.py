@@ -75,288 +75,7 @@ SITES = [
                 "url": "http://nongnghiep.vn/nongnghiepvn/vi-vn/15/29-the-thao.html"
             }
         ],
-        "vietnamnet.vn": [
-            {
-                "cate_id": "3",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/kinh-te/"
-            },
-            {
-                "cate_id": "3",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/kinh-te/tai-chinh/"
-            },
-            {
-                "cate_id": "3",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/kinh-te/thi-truong/"
-            },
-            {
-                "cate_id": "4",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/khoa-hoc/moi-truong/"
-            },
-            {
-                "cate_id": "6",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/doi-song/gia-dinh/"
-            },
-            {
-                "cate_id": "6",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/doi-song/song-la/"
-            },
-            {
-                "cate_id": "8",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/khoa-hoc/suc-khoe-gioi-tinh/"
-            },
-            {
-                "cate_id": "8",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/doi-song/suc-khoe/"
-            },
-            {
-                "cate_id": "9",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/chinh-tri/"
-            },
-            {
-                "cate_id": "9",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/chu-quyen-hoang-sa-truong-sa/"
-            },
-            {
-                "cate_id": "9",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/thoi-su-quoc-hoi/"
-            },
-            {
-                "cate_id": "9",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/thoi-su-quoc-hoi/"
-            },
-            {
-                "cate_id": "9",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/chinh-tri/sua-hien-phap/"
-            },
-            {
-                "cate_id": "9",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/chinh-tri/chong-tham-nhung/"
-            },
-            {
-                "cate_id": "9",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/chinh-tri/tien-luong/"
-            },
-            {
-                "cate_id": "10",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/khoa-hoc/"
-            },
-            {
-                "cate_id": "10",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/khoa-hoc/cong-nghe/"
-            },
-            {
-                "cate_id": "10",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/khoa-hoc/moi-truong/"
-            },
-            {
-                "cate_id": "10",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/khoa-hoc/suc-khoe-gioi-tinh/"
-            },
-            {
-                "cate_id": "10",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/khoa-hoc/kham-pha/"
-            },
-            {
-                "cate_id": "11",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/xa-hoi/"
-            },
-            {
-                "cate_id": "11",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/xa-hoi/thoi-su/"
-            },
-            {
-                "cate_id": "11",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/xa-hoi/phap-luat/"
-            },
-            {
-                "cate_id": "11",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/van-hoa/"
-            },
-            {
-                "cate_id": "11",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/van-hoa/van-de-nong/"
-            },
-            {
-                "cate_id": "11",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/van-hoa/chung-toi-chon/"
-            },
-            {
-                "cate_id": "11",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/van-hoa/phim/"
-            },
-            {
-                "cate_id": "11",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/van-hoa/xem-nghe-choi/"
-            },
-            {
-                "cate_id": "11",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/van-hoa/nhac/"
-            },
-            {
-                "cate_id": "11",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/van-hoa/phat-ngon/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/hau-truong/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/bong-da-quoc-te/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/tin-tuc-bong-da/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/cac-mon-khac/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/premier-league/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/la-liga/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/chuyen-ngoi-sao/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/ho-so/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/serie-a/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/bundesliga/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/champions-league/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/doi-tuyen-viet-nam/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/v-league/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/hang-nhat/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/bong-da-nu/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/cup-quoc-gia/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/chan-dung-phong-van/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/dua-xe/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/dien-kinh/"
-            },
-            {
-                "cate_id": "12",
-                "class": "vietnamnet_vn",
-                "url": "http://thethao.vietnamnet.vn/fms/cac-mon-khac/"
-            },
-            {
-                "cate_id": "13",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/khoa-hoc/cong-nghe/"
-            },
-            {
-                "cate_id": "13",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/cong-nghe-thong-tin-vien-thong/the-gioi-so/"
-            },
-            {
-                "cate_id": "13",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/cong-nghe-thong-tin-vien-thong/vien-thong/"
-            },
-            {
-                "cate_id": "13",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/cong-nghe-thong-tin-vien-thong/san-pham/"
-            },
-            {
-                "cate_id": "14",
-                "class": "vietnamnet_vn",
-                "url": "http://vietnamnet.vn/vn/chuyen-trang/oto-xemay/"
-            }
-        ],
+
         "vnexpress.net": [
             {
                 "cate_id": "3",
@@ -911,3 +630,288 @@ if __name__ == '__main__':
                 print cate['url']
                 print '------------'
     print 'DONE'
+
+'''
+"vietnamnet.vn": [
+            {
+                "cate_id": "3",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/kinh-te/"
+            },
+            {
+                "cate_id": "3",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/kinh-te/tai-chinh/"
+            },
+            {
+                "cate_id": "3",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/kinh-te/thi-truong/"
+            },
+            {
+                "cate_id": "4",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/khoa-hoc/moi-truong/"
+            },
+            {
+                "cate_id": "6",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/doi-song/gia-dinh/"
+            },
+            {
+                "cate_id": "6",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/doi-song/song-la/"
+            },
+            {
+                "cate_id": "8",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/khoa-hoc/suc-khoe-gioi-tinh/"
+            },
+            {
+                "cate_id": "8",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/doi-song/suc-khoe/"
+            },
+            {
+                "cate_id": "9",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/chinh-tri/"
+            },
+            {
+                "cate_id": "9",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/chu-quyen-hoang-sa-truong-sa/"
+            },
+            {
+                "cate_id": "9",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/thoi-su-quoc-hoi/"
+            },
+            {
+                "cate_id": "9",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/thoi-su-quoc-hoi/"
+            },
+            {
+                "cate_id": "9",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/chinh-tri/sua-hien-phap/"
+            },
+            {
+                "cate_id": "9",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/chinh-tri/chong-tham-nhung/"
+            },
+            {
+                "cate_id": "9",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/chinh-tri/tien-luong/"
+            },
+            {
+                "cate_id": "10",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/khoa-hoc/"
+            },
+            {
+                "cate_id": "10",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/khoa-hoc/cong-nghe/"
+            },
+            {
+                "cate_id": "10",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/khoa-hoc/moi-truong/"
+            },
+            {
+                "cate_id": "10",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/khoa-hoc/suc-khoe-gioi-tinh/"
+            },
+            {
+                "cate_id": "10",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/khoa-hoc/kham-pha/"
+            },
+            {
+                "cate_id": "11",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/xa-hoi/"
+            },
+            {
+                "cate_id": "11",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/xa-hoi/thoi-su/"
+            },
+            {
+                "cate_id": "11",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/xa-hoi/phap-luat/"
+            },
+            {
+                "cate_id": "11",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/van-hoa/"
+            },
+            {
+                "cate_id": "11",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/van-hoa/van-de-nong/"
+            },
+            {
+                "cate_id": "11",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/van-hoa/chung-toi-chon/"
+            },
+            {
+                "cate_id": "11",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/van-hoa/phim/"
+            },
+            {
+                "cate_id": "11",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/van-hoa/xem-nghe-choi/"
+            },
+            {
+                "cate_id": "11",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/van-hoa/nhac/"
+            },
+            {
+                "cate_id": "11",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/van-hoa/phat-ngon/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/hau-truong/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/bong-da-quoc-te/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/tin-tuc-bong-da/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/cac-mon-khac/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/premier-league/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/la-liga/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/chuyen-ngoi-sao/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/ho-so/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/serie-a/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/bundesliga/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/champions-league/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/doi-tuyen-viet-nam/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/v-league/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/hang-nhat/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/bong-da-nu/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/cup-quoc-gia/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/chan-dung-phong-van/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/dua-xe/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/dien-kinh/"
+            },
+            {
+                "cate_id": "12",
+                "class": "vietnamnet_vn",
+                "url": "http://thethao.vietnamnet.vn/fms/cac-mon-khac/"
+            },
+            {
+                "cate_id": "13",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/khoa-hoc/cong-nghe/"
+            },
+            {
+                "cate_id": "13",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/cong-nghe-thong-tin-vien-thong/the-gioi-so/"
+            },
+            {
+                "cate_id": "13",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/cong-nghe-thong-tin-vien-thong/vien-thong/"
+            },
+            {
+                "cate_id": "13",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/cong-nghe-thong-tin-vien-thong/san-pham/"
+            },
+            {
+                "cate_id": "14",
+                "class": "vietnamnet_vn",
+                "url": "http://vietnamnet.vn/vn/chuyen-trang/oto-xemay/"
+            }
+        ],
+'''
