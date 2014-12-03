@@ -8,6 +8,7 @@ from sites.dantri_com_vn import dantri_com_vn
 from sites.vnexpress_net import vnexpress_net
 from sites.nongnghiep_vn import nongnghiep_vn
 from sites.tuoitre_vn import tuoitre_vn
+from sites.vietnamnet_vn import vietnamnet_vn
 import pika
 import json
 '''
@@ -52,7 +53,7 @@ if __name__ == '__main__':
     channel.queue_declare(queue=QUEUE_URL, durable=True)
     #channel.queue_declare(queue=QUEUE_ANTI_DUPLICATE, durable=True)
 
-    MULTI_URL_REGEX = re.compile('.*?\$\{(\d+\-\d+)\}\.html')
+    MULTI_URL_REGEX = re.compile('.*?\$\{(\d+\-\d+)\}.*?')
     
     for site in SITES:
         for siteName in site:
@@ -67,7 +68,8 @@ if __name__ == '__main__':
                 cateUrl = cateUrl.strip()
                 if len(cateUrl) > 0:
                     listCateUrls = []
-                    
+                    #import pdb
+                    #pdb.set_trace()
                     # check multi URL
                     matches = MULTI_URL_REGEX.match(cateUrl)
                     if matches:                        
@@ -88,6 +90,7 @@ if __name__ == '__main__':
                         links = siteObj.getLinks(tmpCateUrl)
                         logger.info('Total link: ' + str(len(links)) + ' in category: ' + tmpCateUrl)
                         for link in links:
+                            #print link
                             logging.info(link)
                             urlInfo = {'className' : className, 'cateId' : cateId, 'cateUrl' : tmpCateUrl, 'url' : link}
                             content = json.dumps(urlInfo)

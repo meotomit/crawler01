@@ -9,6 +9,8 @@ from sites.dantri_com_vn import dantri_com_vn
 from sites.vnexpress_net import vnexpress_net
 from sites.nongnghiep_vn import nongnghiep_vn
 from sites.tuoitre_vn import tuoitre_vn
+from sites.vietnamnet_vn import vietnamnet_vn
+
 from tokenizer.VnTokenizer import VnTokenizer
 
 import pika
@@ -183,12 +185,13 @@ if __name__ == '__main__':
                     insertUrl(className, url)
                                         
             
-            ch.basic_ack(delivery_tag=method.delivery_tag)
-            #time.sleep(SLEEP_TIME)
-            time.sleep(3)    
+            
+                #time.sleep(SLEEP_TIME)
+                time.sleep(3)    
         except:
             tb = traceback.format_exc()
             logging.error(tb)
+        ch.basic_ack(delivery_tag=method.delivery_tag)
     channel.basic_qos(prefetch_count=1)    
     channel.basic_consume(callback, queue=QUEUE_URL)
     channel.start_consuming()

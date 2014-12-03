@@ -55,18 +55,21 @@ class vietnamnet_vn(ISite):
         mainContent = soup.find('div', {'class' : 'ArticleContent'})       
         if mainContent:
             mainContent = self.filterTags(mainContent)
-            
-            # remove adContainer
-            for elem in mainContent.findAll('div', {'class' : 'adContainer'}):
-                elem.extract()
-                
-            # remove related page
-            for elem in mainContent.findAll('a'):
-                elem.extract()
-                    
-            text = mainContent.get_text().strip()
-            
-            text = self.filterContent(text)
+            try:
+                # remove adContainer
+                for elem in mainContent.findAll('div', {'class' : 'adContainer'}):
+                    elem.extract()
+
+                # remove related page
+                for elem in mainContent.findAll('a'):
+                    elem.extract()
+
+                text = mainContent.get_text().strip()
+
+                text = self.filterContent(text)
+            except:
+                return None
+
             if text:
                 text = re.sub(u'(Theo Dân trí)<', '', text)
                 
@@ -91,7 +94,8 @@ if __name__ == '__main__':
         url = 'http://vietnamnet.vn/vn/giao-duc/dien-dan/'
         url = 'http://vietnamnet.vn/vn/giao-duc/chuyen-giang-duong/'
         url = 'http://vietnamnet.vn/vn/doi-song/'
-        url = 'http://vietnamnet.vn/vn/kinh-te/trang2/index.html'
+        #url = 'http://vietnamnet.vn/vn/kinh-te/trang2/index.html'
+        #url = 'http://vietnamnet.vn/vn/kinh-te/kinh-doanh/trang2/index.html'
         listLinks = obj.getLinks(url)
         for link in listLinks:
             print link        
