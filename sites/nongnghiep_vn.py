@@ -45,8 +45,8 @@ class nongnghiep_vn(ISite):
             Lay danh sach cac trang chi tiet trong 1 trang chuyen muc
         '''
         results = []
-        categoryPrefix = 'http://nongnghiep.vn/nongnghiepvn/vi-vn/'
-        categorySuffix = self.getCategorySuffix(url)
+        categoryPrefix = 'http://nongnghiep.vn'
+        #categorySuffix = self.getCategorySuffix(url)
         
         html = self.getHtml(url)
         soup = BeautifulSoup(html)
@@ -54,14 +54,16 @@ class nongnghiep_vn(ISite):
         #print content
         if content:
             links = content.findAll('a')
+            
+            
             for link in links:
                 if link.has_attr('href'):                
-                    href = link['href']                    
-                    if categorySuffix != None:  
-                        if href.startswith(categoryPrefix) and href.find(categorySuffix) != -1:
-                            tmp = self.filterUrl(href)
-                            if tmp and (tmp not in results):                                                        
-                                results.append(tmp)
+                    href = link['href']                           
+                    #if categorySuffix != None:  
+                    if href.startswith(categoryPrefix) : #and href.find(categorySuffix) != -1:
+                        tmp = self.filterUrl(href)
+                        if tmp and (tmp not in results):                                                        
+                            results.append(tmp)
                     
         else :
             print 'Can NOT parse URL: ', url
@@ -73,24 +75,11 @@ class nongnghiep_vn(ISite):
         
         html = self.getHtml(pageUrl)
         soup = BeautifulSoup(html, 'lxml')
-        mainContent = soup.find('div', {'class' : 'p-news-detail'})
-        titleSoup = mainContent.find('div', {'class' : 'title'})
-        sapoSoup = mainContent.find('div', {'class' : 'sapo'})
-        contentSoup = mainContent.find('div', {'class' : 'content'})
-        
-        if (titleSoup):
-            tmp1 = titleSoup.get_text().strip()
-            result += tmp1 + '\r\n'
-            
-        if (sapoSoup):
-            tmp2 = sapoSoup.get_text().strip()
-            result += tmp2 + '\r\n'
-            
-        if mainContent:
-            contentSoup = self.filterTags(contentSoup)                        
-            tmp3 = contentSoup.get_text().strip()            
+        mainContent = soup.find('div', {'itemprop' : 'articleBody'})
+        if mainContent:        
+            tmp3 = mainContent.get_text().strip()            
             tmp3 = self.filterContent(tmp3)
-            result += tmp3
+            result = tmp3
         else :
             print 'can not parse'
         if len(result) < 1:
@@ -101,15 +90,33 @@ if __name__ == '__main__':
     
     obj = nongnghiep_vn()
 
-    url = 'http://nongnghiep.vn/nongnghiepvn/vi-vn/15/20-ky-thuat-nghe-nong.html'
+    '''
+    import urllib
+    import urllib2
+    url = 'http://nongnghiep.vn/Ajaxloads/ServiceData.asmx/GetNewsDataScrollNews'
+    values = { 'catid': 29,'pageIndex': 1}
+    data = urllib.urlencode(values)
+    req = urllib2.Request(url, data)
+    response = urllib2.urlopen(req)
+    result = response.read()
+    print result
+    '''
+    
+    
+    '''
+    url = 'http://nongnghiep.vn/nongnghiepvn/vi-vn/15/28-giao-duc.html'
     listLinks = obj.getLinks(url)
+    print 'Total links: ', len(listLinks)
     for link in listLinks:
         print link
-         
     '''
-    url = 'http://nongnghiep.vn/nongnghiepvn/vi-vn/25/133577/khuyen-nong/bo-ha-noi-lot-xac.html'
+    
+    url = 'http://nongnghiep.vn/hai-xe-dau-dau-ca-vung-vai-khap-quoc-lo-post135325.html'
+    url = 'http://nongnghiep.vn/ve-buc-thu-gui-bo-truong-cua-chau-gai-my-linh-post135342.html'
+    url = 'http://nongnghiep.vn/cham-soc-cay-mau-den-cuoi-vu-post135450.html'
+    url = 'http://nongnghiep.vn/ghep-cai-tao-dieu-o-dong-nai-post135463.html'
     mainContent = obj.getPageDetail(url)
     print mainContent
-    '''
+    
     
     print 'Done'
