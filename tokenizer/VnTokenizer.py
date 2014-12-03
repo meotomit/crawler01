@@ -18,15 +18,19 @@ from utils.StringTool import StringTool
 
 import hashlib
 import time
-from tokenizer.ITokenizer import ITokenizer
-from platform import platform
 
-class VnTokenizer(ITokenizer):
+class VnTokenizer(object):
     '''
     classdocs
     '''
+    import platform
+    if platform.system() == 'Linux':
+        CMD_PATH = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/../bin/vntokenizer/vnTokenizer.sh')
+    else : 
+        CMD_PATH = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/../bin/vntokenizer/vnTokenizer.bat')
     
-    CMD_PATH = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/../bin/vntokenizer/vnTokenizer.bat') 
+    print CMD_PATH
+    
     TEMP_DIR = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/../data/tmp')
     
 
@@ -121,6 +125,7 @@ class VnTokenizer(ITokenizer):
         f.write(inputContent)
         f.close()
         logging.debug('Write content to file: ' + fileName)
+        print 'filename ==> ', fileName
         
         if os.path.isfile(self.TEMP_DIR + "/" + fileName): 
             try:

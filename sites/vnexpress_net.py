@@ -60,16 +60,19 @@ class vnexpress_net(ISite):
         mainContent = soup.find('div', {'class' : 'block_col_480'})
         #mainContent = soup.find('div', {'id' : 'left_calculator'})        
         if mainContent:
-            mainContent = self.filterTags(mainContent)
-            elem1 = mainContent.find('div', {'class' : 'block_timer_share'})
-            elem1.extract()
-            
-            elem2 = mainContent.find('div', {'class' : 'div-fbook width_common title_div_fbook'})
-            elem2.extract()            
-            
-            text = mainContent.get_text().strip()
-            
-            text = self.filterContent(text)
+            try:
+                mainContent = self.filterTags(mainContent)
+                elem1 = mainContent.find('div', {'class' : 'block_timer_share'})
+                elem1.extract()
+
+                elem2 = mainContent.find('div', {'class' : 'div-fbook width_common title_div_fbook'})
+                elem2.extract()
+
+                text = mainContent.get_text().strip()
+
+                text = self.filterContent(text)
+            except:
+                return None
             if text :
                 return text
             else:
