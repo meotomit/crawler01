@@ -55,18 +55,21 @@ class vietnamnet_vn(ISite):
         mainContent = soup.find('div', {'class' : 'ArticleContent'})       
         if mainContent:
             mainContent = self.filterTags(mainContent)
-            
-            # remove adContainer
-            for elem in mainContent.findAll('div', {'class' : 'adContainer'}):
-                elem.extract()
-                
-            # remove related page
-            for elem in mainContent.findAll('a'):
-                elem.extract()
-                    
-            text = mainContent.get_text().strip()
-            
-            text = self.filterContent(text)
+            try:
+                # remove adContainer
+                for elem in mainContent.findAll('div', {'class' : 'adContainer'}):
+                    elem.extract()
+
+                # remove related page
+                for elem in mainContent.findAll('a'):
+                    elem.extract()
+
+                text = mainContent.get_text().strip()
+
+                text = self.filterContent(text)
+            except:
+                return None
+
             if text:
                 text = re.sub(u'(Theo Dân trí)<', '', text)
                 
