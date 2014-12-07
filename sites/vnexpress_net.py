@@ -31,14 +31,17 @@ class vnexpress_net(ISite):
         results = []
         html = self.getHtml(url)
         
-        posPaging = url.find('/page/')
-        categoryPrefix = url
-        if posPaging > 1:
-            categoryPrefix = url[:posPaging+1] # http://dantri.com.vn/the-gioi.htm --> http://dantri.com.vn/the-gioi/
-        
+        # check category prefix
+        if url.find('thethao.vnexpress.net') > 0:
+            categoryPrefix = 'http://thethao.vnexpress.net/tin-tuc/'
+        else :
+            posPaging = url.find('/page/')
+            categoryPrefix = url
+            if posPaging > 1:
+                categoryPrefix = url[:posPaging+1] #
+         
         soup = BeautifulSoup(html)
-        content = soup.find('div', {'id' : 'container'})
-        
+        content = soup.find('div', {'class' : 'block_mid_new'})
         if content:
             links = content.findAll('a')
             for link in links:
@@ -57,20 +60,21 @@ class vnexpress_net(ISite):
     def getPageDetail(self, pageUrl):
         html = self.getHtml(pageUrl)
         soup = BeautifulSoup(html, 'lxml')
-        mainContent = soup.find('div', {'class' : 'block_col_480'})
+        #mainContent = soup.find('div', {'class' : 'block_col_480'})
+        mainContent = soup.find('div', {'class'  :'fck_detail width_common'})
         #mainContent = soup.find('div', {'id' : 'left_calculator'})        
         if mainContent:
             try:
                 mainContent = self.filterTags(mainContent)
-                elem1 = mainContent.find('div', {'class' : 'block_timer_share'})
-                elem1.extract()
+                #elem1 = mainContent.find('div', {'class' : 'block_timer_share'})
+                #elem1.extract()
 
-                elem2 = mainContent.find('div', {'class' : 'div-fbook width_common title_div_fbook'})
-                elem2.extract()
+                #elem2 = mainContent.find('div', {'class' : 'div-fbook width_common title_div_fbook'})
+                #elem2.extract()
 
                 text = mainContent.get_text().strip()
 
-                text = self.filterContent(text)
+                #text = self.filterContent(text)
             except:
                 return None
             if text :
@@ -147,20 +151,29 @@ if __name__ == '__main__':
         url = 'http://sohoa.vnexpress.net/'
         url = 'http://sohoa.vnexpress.net/tin-tuc/kinh-nghiem'
         url = 'http://kinhdoanh.vnexpress.net/tin-tuc/tien-cua-toi/page/1.html'
+        url =  'http://thethao.vnexpress.net/tin-tuc/cac-mon-khac/page/1.html'
+        url = 'http://thethao.vnexpress.net/page/2.html'
+        url = 'http://thethao.vnexpress.net/tin-tuc/bong-da/la-liga/page/8.html'
+        
         listLinks = obj.getLinks(url)
+        count = 0
         for link in listLinks:
-            print link
+            count += 1
+            print count, link
         
     
         
-
         # Test get page detail
-#         url = 'http://kinhdoanh.vnexpress.net/tin-tuc/doanh-nghiep/khu-vui-choi-tre-em-thi-truong-3-ty-dola-3091745.html'
+#       url = 'http://kinhdoanh.vnexpress.net/tin-tuc/doanh-nghiep/khu-vui-choi-tre-em-thi-truong-3-ty-dola-3091745.html'
         url = 'http://vnexpress.net/tin-tuc/phap-luat/ho-so-pha-an/ke-lam-cong-nhot-xac-ba-chu-trong-gieng-3023642.html'
         url = 'http://doisong.vnexpress.net/tin-tuc/suc-khoe/cac-ngoi-sao-mac-chung-tang-dong-thoi-nien-thieu-3089584.html'
         url = 'http://sohoa.vnexpress.net/tin-tuc/cong-dong/hoi-dap/co-6-7-trieu-dong-mua-dien-thoai-2-sim-nao-2979347.html'
         url = 'http://sohoa.vnexpress.net/tin-tuc/doi-song-so/bao-mat/nguy-co-mat-tai-khoan-tu-duong-link-gia-mao-tren-facebook-3093560.html'
-        url = 'http://sohoa.vnexpress.net/tin-tuc/kinh-nghiem/cai-dat-zalo-tren-nokia-asha-503-2979309.html'
+        #url = 'http://sohoa.vnexpress.net/tin-tuc/kinh-nghiem/cai-dat-zalo-tren-nokia-asha-503-2979309.html'
+        #url = 'http://kinhdoanh.vnexpress.net/tin-tuc/tien-cua-toi/bi-kip-thanh-cong-cua-ty-phu-richard-branson-2965029.html'
+        url = 'http://thethao.vnexpress.net/tin-tuc/affcup/malaysia-viet-nam-hien-ngang-vao-hang-hum-3117205.html'
+        url = 'http://thethao.vnexpress.net/tin-tuc/giai-ngoai-hang-anh/stoke-city-3-2-arsenal-tro-lai-mat-dat-3117167.html'
+        url = 'http://sohoa.vnexpress.net/tin-tuc/san-pham/dien-thoai/philips-ra-mat-bo-ba-smartphone-moi-tai-viet-nam-3116756.html'
         mainContent = obj.getPageDetail(url)
         print mainContent
         

@@ -33,7 +33,8 @@ import json
 #FORMATER = '%(asctime)s\t%(process)-6d\t%(levelname)-6s\t%(name)s\t%(message)s'
 #logging.basicConfig(level=logging.INFO, format=FORMATER,)
 import logging.handlers
-formatter = logging.Formatter('%(asctime)s\t%(process)-6d\t%(levelname)-6s\t%(name)s\t%(message)s')
+#formatter = logging.Formatter('%(asctime)s\t%(process)-6d\t%(levelname)-6s\t%(name)s\t%(message)s')
+formatter = logging.Formatter('%(asctime)s\t%(name)s\t%(message)s')
 
 logger = logging.getLogger('CRAWLER')
 
@@ -63,6 +64,7 @@ rc = redis.Redis('localhost')
 Load các URL đã crawler vào Redis để cache
 '''
 def loadURL2Redis():
+    '''
     query1 = "select id, site, url from visited_url"
     db = DB()   
     cursor = db.cursor()
@@ -74,7 +76,55 @@ def loadURL2Redis():
         url = row['url']    
         rc.sadd(site, url)
     logger.info('Load : ' + str(len(rows)) + ' to Redis')
-
+    '''
+    
+    WINDOW_SIZE = 1000  # so luong item muon fetch
+    WINDOW_INDEX = 0
+    db = DB()
+    
+    logger.info('Deleting OLD keys ...')
+    query1 = "SELECT DISTINCT site FROM visited_url"
+    cursor = db.cursor()
+    cursor.execute(query1)
+    rows = cursor.fetchall()
+    for row in rows:
+        site = row['site']  
+        redisKey = 'VISITED_URL_' + site
+        rc.delete(redisKey)
+        logger.info('deleting key: ' + redisKey)
+    logger.info('Deleted OLD keys')
+    logger.info('-----------------------------')
+    sleep(2)
+    totalUrl = 0
+    while True:
+        start = WINDOW_SIZE * WINDOW_INDEX  + 1
+        stop  = WINDOW_SIZE * (WINDOW_INDEX + 1)
+        # things = query.slice(start, stop).all()
+        query = "select site, url from visited_url order by id limit " + str(start) + ", " + str(WINDOW_SIZE)
+        logger.info(query)
+        #sleep(3)
+        cursor = db.cursor()
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        
+        # query toi khi het row            
+        if rows == None or len(rows) == 0:
+            break
+        else:
+            logger.info("Query size: " + str(len(rows)))
+            pipe = rc.pipeline()
+            pipe.multi()
+            for row in rows:
+                totalUrl += 1
+                site = row['site']
+                url = row['url']
+                redisKey = 'VISITED_URL_' + site
+                pipe.sadd(redisKey, url)
+            pipe.execute()
+            logger.info('Add : ' + str(len(rows)) + ' URL to Redis')
+        WINDOW_INDEX += 1
+    logger.info('Added URL --> Redis ==> OK, total URL: ' + str(totalUrl))
+    
 '''
     Insert URL đã crawl được vào database và Redis
 '''           
@@ -103,12 +153,11 @@ if __name__ == '__main__':
     
     logger.info('Load URL --> Redis')
     loadURL2Redis()    
-    logger.info('Load URL --> Redis ==> OK')
+    
     
     db = DB()
 
     tokenizer = VnTokenizer()
-    print 'STOP WORDS: ' + str(len(tokenizer.STOP_WORDS))
     
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
@@ -164,7 +213,8 @@ if __name__ == '__main__':
                                 termFrequencyDict[word] = 1
                     #print json.dumps(termFrequency, sort_keys=True, indent=4, separators=(',', ': '))
                     termFrequencyJson = json.dumps(termFrequencyDict, ensure_ascii=False, encoding='utf-8')
-                    logger.info(termFrequencyJson)
+                    #logger.info(termFrequencyJson)
+                    logger.info('Total word' + str(len(termFrequencyDict)))
                     
                     # join --> string
                     filterContent = ' '.join(filterWords)
@@ -175,7 +225,7 @@ if __name__ == '__main__':
                     tokenContent = tokenContent.replace("'", "\\'")
                     filterContent = filterContent.replace("'", "\\'")
                     
-                    query = "INSERT INTO site_content (cate_id, site, url, content, word_1, word_2, tf) values (%s, '%s', '%s', '%s', '%s', '%s', '%s')" % \
+                    query = "INSERT INTO site_content_vnex_thethao (cate_id, site, url, content, word_1, word_2, tf) values (%s, '%s', '%s', '%s', '%s', '%s', '%s')" % \
                             (str(cateId), className.encode('utf-8'), url.encode('utf-8'), content.encode('utf-8'), tokenContent, filterContent, termFrequencyJson)
                     cur = db.cursor()
                     cur.execute(query)
@@ -187,7 +237,9 @@ if __name__ == '__main__':
             
             
                 #time.sleep(SLEEP_TIME)
-                time.sleep(3)    
+                time.sleep(3)
+            else:
+                logger.info('EXISTED URL: ' + url)    
         except:
             tb = traceback.format_exc()
             logging.error(tb)

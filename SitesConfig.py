@@ -60,7 +60,7 @@ SITES = [
 #                 "url": "http://nongnghiep.vn/the-thao-29-15.html"
 #             }
 #         ],
-          "vietnamnet.vn": [
+#           "vietnamnet.vn": [
 #             {
 #                 "cate_id": "3",
 #                 "class": "vietnamnet_vn",
@@ -340,8 +340,9 @@ SITES = [
 #                 "class": "vietnamnet_vn",
 #                 "url": "http://vietnamnet.vn/vn/chuyen-trang/oto-xemay/"
 #             }
-        ]
-#         , "vnexpress.net": [
+#         ] , 
+#           "vietnamnet.vn": [
+            "vnexpress.net": [
 #             {
 #                 "cate_id": "3",
 #                 "class": "vnexpress_net",
@@ -545,85 +546,139 @@ SITES = [
 #             {
 #                 "cate_id": "12",
 #                 "class": "vnexpress_net",
-#                 "url": "http://thethao.vnexpress.net/"
+#                 "url": "http://thethao.vnexpress.net/page/${1-10}.html"
 #             },
 #             {
 #                 "cate_id": "12",
 #                 "class": "vnexpress_net",
-#                 "url": "http://thethao.vnexpress.net/tin-tuc/bong-da"
+#                 "url": "http://thethao.vnexpress.net/tin-tuc/bong-da/page/${1-10}.html"
 #             },
 #             {
 #                 "cate_id": "12",
 #                 "class": "vnexpress_net",
-#                 "url": "http://thethao.vnexpress.net/tin-tuc/bong-da/bong-da-trong-nuoc"
+#                 "url": "http://thethao.vnexpress.net/tin-tuc/bong-da/bong-da-trong-nuoc/page/${1-5}.html"
 #             },
 #             {
 #                 "cate_id": "12",
 #                 "class": "vnexpress_net",
-#                 "url": "http://thethao.vnexpress.net/tin-tuc/tennis"
+#                 "url": "http://thethao.vnexpress.net/tin-tuc/bong-da/giai-ngoai-hang-anh/page/${1-5}.html"
 #             },
 #             {
 #                 "cate_id": "12",
 #                 "class": "vnexpress_net",
-#                 "url": "http://thethao.vnexpress.net/tin-tuc/cac-mon-khac"
+#                 "url": "http://thethao.vnexpress.net/tin-tuc/bong-da/champions-league/page/${1-5}.html"
 #             },
 #             {
 #                 "cate_id": "12",
 #                 "class": "vnexpress_net",
-#                 "url": "http://thethao.vnexpress.net/tin-tuc/hau-truong"
+#                 "url": "http://thethao.vnexpress.net/tin-tuc/bong-da/la-liga/page/${1-5}.html"
 #             },
 #             {
-#                 "cate_id": "13",
+#                 "cate_id": "12",
 #                 "class": "vnexpress_net",
-#                 "url": "http://sohoa.vnexpress.net/"
+#                 "url": "http://thethao.vnexpress.net/tin-tuc/bong-da/serie-a/page/${1-5}.html"
 #             },
 #             {
-#                 "cate_id": "13",
+#                 "cate_id": "12",
 #                 "class": "vnexpress_net",
-#                 "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham"
+#                 "url": "http://thethao.vnexpress.net/tin-tuc/tennis/page/${1-5}.html"
 #             },
 #             {
-#                 "cate_id": "13",
+#                 "cate_id": "12",
 #                 "class": "vnexpress_net",
-#                 "url": "http://sohoa.vnexpress.net/danh-gia"
+#                 "url": "http://thethao.vnexpress.net/tin-tuc/cac-mon-khac/page/${11-15}.html"
 #             },
+#                              
 #             {
-#                 "cate_id": "13",
+#                 "cate_id": "12",
 #                 "class": "vnexpress_net",
-#                 "url": "http://sohoa.vnexpress.net/tin-tuc/doi-song-so"
+#                 "url": "http://thethao.vnexpress.net/tin-tuc/hau-truong/page/${1-10}.html"
 #             },
+#-------------------------------
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham/dien-thoai/page/${1-5}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham/may-tinh-bang/page/${1-5}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham/laptop/page/${1-5}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham/may-anh/page/${1-5}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham/thiet-bi-nghe-nhin/page/${1-5}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham/may-anh/do-choi-so/${1-5}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham/may-tinh-de-ban/page/${1-5}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham/thiet-bi-van-phong/page/${1-5}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham/may-quay/page/${1-5}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham/phan-mem/page/${1-5}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/san-pham/linh-kien/page/${1-5}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/danh-gia/page/${1-10}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/doi-song-so/page/${1-10}.html"
+            },
+            {
+                "cate_id": "13",
+                "class": "vnexpress_net",
+                "url": "http://sohoa.vnexpress.net/tin-tuc/kinh-nghiem/page/${1-10}.html"
+            },
+#--------------------------
 #             {
-#                 "cate_id": "13",
+#                 "cate_id": "14",
 #                 "class": "vnexpress_net",
-#                 "url": "http://sohoa.vnexpress.net/tin-tuc/kinh-nghiem"
-#             },
-#             {
-#                 "cate_id": "13",
-#                 "class": "vnexpress_net",
-#                 "url": "http://sohoa.vnexpress.net/tin-tuc/cong-dong"
-#             },
-#             {
-#                 "cate_id": "13",
-#                 "class": "vnexpress_net",
-#                 "url": "http://sohoa.vnexpress.net/chu-de"
-#             },
-#             {
-#                 "cate_id": "13",
-#                 "class": "vnexpress_net",
-#                 "url": "http://sohoa.vnexpress.net/tin-tuc/anh-video"
+#                 "url": "http://vnexpress.net/tin-tuc/oto-xe-may/tu-van/page/${1-20}.html"
 #             },
 #             {
 #                 "cate_id": "14",
 #                 "class": "vnexpress_net",
-#                 "url": "http://vnexpress.net/tin-tuc/oto-xe-may/"
-#             },
-#             {
-#                 "cate_id": "14",
-#                 "class": "vnexpress_net",
-#                 "url": "http://vnexpress.net/tin-tuc/oto-xe-may/thi-truong"
+#                 "url": "http://vnexpress.net/tin-tuc/oto-xe-may/thi-truong/page/${1-16}.html"
 #             }
-#         ]
+         ],
 #         
+#------------------------------------------------------------------------------------
 #         ,"dantri.com.vn": [
 #             {
 #                 "cate_id": "3",
@@ -810,6 +865,7 @@ SITES = [
 #                 "class": "dantri_com_vn",
 #                 "url": "http://dantri.com.vn/van-hoa/am-nhac/trang-1.htm"
 #             },
+
 #             {
 #                 "cate_id": "12",
 #                 "class": "dantri_com_vn",

@@ -75,9 +75,9 @@ if __name__ == '__main__':
                     if matches:                        
                         pageRangeStr = matches.group(1)
                         pageRangeArr = pageRangeStr.split('-')
-                        for p in range(int(pageRangeArr[0]), int(pageRangeArr[1])):
+                        for p in range(int(pageRangeArr[0]), int(pageRangeArr[1]) + 1):
                             url = re.sub(r'\$\{\d+\-\d+\}', str(p), cateUrl)
-                            print url
+                            #print url
                             listCateUrls.append(url)
                     else:
                         listCateUrls.append(cateUrl)
@@ -103,5 +103,5 @@ if __name__ == '__main__':
                         sleep(3)
                     #logging.info('-----------------------')
 
-    #logging.info('DONE')
+    logging.info('============ DONE ==============')
         

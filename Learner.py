@@ -31,6 +31,11 @@ logging.getLogger('pika.frame').setLevel(logging.INFO)
 import redis
 rc = redis.Redis('localhost')
 
+def countIdf():
+    pass
+
+def countTfIdf():
+    pass
 
 if __name__ == '__main__':
     
@@ -50,7 +55,7 @@ if __name__ == '__main__':
         stop  = WINDOW_SIZE * (WINDOW_INDEX + 1)
         # things = query.slice(start, stop).all()
         query = "select cate_id, tf from site_content order by id limit " + str(start) + ", " + str(WINDOW_SIZE)
-        logger.info(query) 
+        logger.info(query)
         
         cursor = db.cursor()
         logger.info(query)
