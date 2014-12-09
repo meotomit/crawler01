@@ -102,6 +102,28 @@ def insertKeyword(keyword, docId, tf):
         db.conn.commit()
         # cursor.close()
 
+def existKey(key):
+    res = True
+    if rc.exists(key) == 0:
+        res = False
+    return res
+
+def pushTfIdf(word, docId, tf, idf, tfidf):
+    import hashlib
+    hashKey = "%s_%s" %(hashlib.sha1(word.encode('utf-8')).hexdigest(), docId)
+    if existKey(hashKey):
+        rc.hdel(hashKey, 'tf')
+        rc.hdel(hashKey, 'idf')
+        rc.hdel(hashKey, 'tfidf')
+
+    if(existKey(hashKey) != True):
+        rc.hset(hashKey, 'tf', tf)
+        rc.hset(hashKey, 'idf', idf)
+        rc.hset(hashKey, 'tfidf', tfidf)
+
+    # print hashKey, 'tf', rc.hget(hashKey, 'tf')
+    # print hashKey, 'idf', rc.hget(hashKey, 'idf')
+    # print hashKey, 'tfidf', rc.hget(hashKey, 'tfidf')
 
 if __name__ == '__main__':
     
@@ -140,7 +162,11 @@ if __name__ == '__main__':
                 content = row['tf']
                 cateId = row['cate_id']
                 docId = row["id"]
-                mapWeightInDoc = json.loads(content)
+                # print content
+                try :
+                    mapWeightInDoc = json.loads(content)
+                except:
+                    continue
                 NUMBER_OF_DOC = NUMBER_OF_DOC + 1
                 for word in mapWeightInDoc:
 
@@ -170,7 +196,7 @@ if __name__ == '__main__':
                 #     mapCategoryCounter[cateId] =  totalWeightInCate
                 # print len(mapWeightInDoc)
                 # print mapCategoryCounter
-                print '-------------------'
+                # print '-------------------'
         # sleep(2)
         WINDOW_INDEX += 1
 
@@ -196,16 +222,21 @@ if __name__ == '__main__':
                 content = row['tf']
                 cateId = row['cate_id']
                 docId = row["id"]
+                print docId
                 mapWeightInDoc = json.loads(content)
                 allTfidf = {}
                 for word in mapWeightInDoc:
                     tf = int(mapWeightInDoc[word])
-                    tfidf = (1 + math.log10(tf)) * math.log10(NUMBER_OF_DOC / mapCategoryCounter[word])
+                    idf = mapCategoryCounter[word]
+                    tfidf = (1 + math.log10(tf)) * math.log10(NUMBER_OF_DOC / idf)
                     allTfidf[word] = tfidf
-                    tfidfJson = json.dumps(allTfidf, ensure_ascii=False, encoding='utf-8')
+                    pushTfIdf(word, docId, tf, idf, tfidf)
+                    # exit()
+                    # tfidfJson = json.dumps(allTfidf, ensure_ascii=False, encoding='utf-8')
                     # print tfidf
 
-                updateTfidf(docId, tfidfJson)
+                # updateTfidf(docId, tfidfJson)
+                print 'save ifidf for ', docId
         WINDOW_INDEX += 1
     # print mapCategoryCounter
     
