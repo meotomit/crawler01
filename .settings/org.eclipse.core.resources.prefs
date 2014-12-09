@@ -10,5 +10,6 @@ encoding/<project>=UTF-8
 encoding/Crawler.py=utf-8
 encoding/Crawler2.py=utf-8
 encoding/Learner.py=utf-8
+encoding/Learner_tfidf.py=utf-8
 encoding/SitesConfig.py=utf8
 encoding/Test1.py=utf-8

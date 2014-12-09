@@ -43,8 +43,11 @@ class VnTokenizer(object):
         '''
         Constructor
         '''
+        print('Start loading stopwords ...')
         stopwords = self.loadStopwords()
         self.STOP_WORDS = stopwords
+        print('Loaded stopwords, total stopwords = ' + str(len(self.STOP_WORDS)))
+    
         pass
     
     '''
