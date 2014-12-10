@@ -34,14 +34,17 @@ import math
 import redis
 rc = redis.Redis('localhost')
 
-NUM_DOCS = 10732
+NUM_DOCS = 10735
 #NUM_WORDS = 95328 # so word trong TF (ko loai nhung tu co TF > 0)
 #NUM_WORDS = 31945 # so word trong TF (ko loai nhung tu co TF > 1)
-NUM_WORDS = 19432 # so word trong TF (ko loai nhung tu co TF > 1)
-NUM_WORDS = 4863  # so word trong TF > 8
+#NUM_WORDS = 19432 # so word trong TF (ko loai nhung tu co TF > 1)
+# NUM_WORDS = 4863  # so word trong TF > 8
+
 TABLE = 'site_content_2'
 LIST_CATE = [3, 6, 8, 11, 12, 13, 14]
 TF_THRESHOLD = 8 # chi lay cac tu co term frequency > 1
+WORDS = {}
+NUMWORDS = {'a': 0}
 
 '''
     Tinh document frequency (DF)
@@ -92,6 +95,9 @@ def countDF():
                             pipe.hset("TF", word, tf)
                             pipe.hset('CATE', word, cateId) # xac dinh word thuoc cate nao
                             pipe.execute()
+                            if WORDS.has_key(word) == False:
+                                WORDS[word] = 1
+                                NUMWORDS['a'] += 1
                 except:
                     logger.error('Error in DOC_ID: ' + str(docId))
                     tb = traceback.format_exc()
@@ -99,7 +105,6 @@ def countDF():
         WINDOW_INDEX += 1
     logger.info('Done counting DF')
 
-'''
 
 
 def countTF_IDF():
@@ -132,11 +137,11 @@ def countTF_IDF():
             print 'Total : ', count
     pipe.execute()
     print count
-'''
+
     
 '''
     Tính trọng số tổng của cả cate
-
+'''
 def countTotalWeightInCate():
     listWords = rc.hgetall('CATE')
     count= 1
@@ -148,7 +153,6 @@ def countTotalWeightInCate():
         print listWords[word]
         
         #print value    
-'''
 
 '''
 Tinh xac xuat tung chuyen muc
@@ -192,6 +196,7 @@ def PXkCi():
         #print wordWeightInCate 
         
         #pxkci = float(wordWeightInCate) / float(mapCateWeight[cate])
+        NUM_WORDS = NUMWORDS['a']
         pxkci = float(int(wordWeightInCate) + 1) / float(int(mapCateWeight[cate]) + NUM_WORDS)    # --> laplace
         print pxkci
         print '---------------'
@@ -240,6 +245,8 @@ def predictor():
                 termFrequencyDict[word] = curCounter + 1
             else:
                 termFrequencyDict[word] = 1
+    NUM_WORDS = NUMWORDS['a']
+    print 'NUM_WORDS => ', NUM_WORDS
     print termFrequencyDict
     mapResult = {}
     # tinh xac xuat tung cate
@@ -264,8 +271,11 @@ def predictor():
             if (pxkci != 0):
                 #import pdb
                 #pdb.set_trace()
-                pcateNew = pcateNew * tf * pxkci
+                pcateNew = pcateNew + math.log10(tf * pxkci)
                 #print pcateNew
+
+        pcateNew = math.fabs(pcateNew)
+        mapResult[cateId] = pcateNew
         #import pdb
         #pdb.set_trace()
         print 'Cate: ', cateId, ' --> ', float(pcateNew)
@@ -273,38 +283,38 @@ def predictor():
         #mapResult[cateId : pcateNew]
     
     # check max
-    '''
+
     max = 0
     cateMax = 0
     for cate in mapResult:
-        print cate
+        # print cate
         if mapResult[cate] > max:
             max = mapResult[cate]
             cateMax = cate
     print 'Result: '
     print cateMax
     print max 
-    '''
+
     
     #print content2
     
 if __name__ == '__main__':
     
     # Step 1: Tinh DF
-    #countDF()
+    countDF()
     
     # Step 2: Tinh TF_IDF    --> ko can neu ko tinh theo TF_IDF
     #https://lucene.apache.org/core/4_0_0/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html
-    #countTF_IDF()
+    countTF_IDF()
     
     # Step 3 --> ko can neu ko tinh theo TF_IDF
-    #countTotalWeightInCate()
+    countTotalWeightInCate()
     
     # Step 
-    #PXkCi()
+    PXkCi()
     
     # step 
-    #countPC()
+    countPC()
     
     # step
     predictor()
