@@ -170,6 +170,7 @@ def countPC():
         pc = float(totalItem) / NUM_DOCS
         rc.hset("PC", cateId, pc)
     print 'Count PC --> DONE'
+
 '''
     Tinh xac xuat XkCi
 '''
@@ -214,6 +215,7 @@ def PXkCi():
 def predictor():
     import codecs, os
     stopwordsFile = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/data/test.txt')
+    stopwordsFile = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/data/thethao.txt')
     f = codecs.open(stopwordsFile, encoding='utf-8', mode='r')
     content = f.read()
     f.close()
