@@ -178,7 +178,7 @@ def calTfIdf():
         start = WINDOW_SIZE * WINDOW_INDEX  + 1
         stop  = WINDOW_SIZE * (WINDOW_INDEX + 1)
         # things = query.slice(start, stop).all()
-        query = "select id, cate_id, tf from site_content order by id limit " + str(start) + ", " + str(WINDOW_SIZE)
+        query = "select id, cate_id, tf from site_content WHERE  order by id limit " + str(start) + ", " + str(WINDOW_SIZE)
         logger.info(query)
 
         cursor = db.cursor()
@@ -222,7 +222,7 @@ def calTfIdf():
         start = WINDOW_SIZE * WINDOW_INDEX  + 1
         stop  = WINDOW_SIZE * (WINDOW_INDEX + 1)
         # things = query.slice(start, stop).all()
-        query = "select id, cate_id, tf from site_content order by id limit " + str(start) + ", " + str(WINDOW_SIZE)
+        query = "select id, cate_id, tf from site_content_2 order by id limit " + str(start) + ", " + str(WINDOW_SIZE)
         logger.info(query)
 
         cursor = db.cursor()
@@ -248,6 +248,7 @@ def calTfIdf():
                     mapWeightInDoc = json.loads(content)
                 except:
                     print 'error => ', docId
+                    continue
                 allTfidf = {}
                 for word in mapWeightInDoc:
                     tf = int(mapWeightInDoc[word])
@@ -393,92 +394,170 @@ def countPC():
         rc.hset("PC", cateId, pc)
     print 'Count PC --> DONE'
 
+def checkUrl(url):
+    query = "select id from test WHERE url='%s'" % (url)
+    # logger.info(query)
+    cursor = db.cursor()
+    logger.info(query)
+    cursor.execute(query)
+    rows = cursor.fetchall()
+    # cursor.close()
+    # print rows
+    if rows == None or len(rows) == 0:
+        return False
+    else:
+        return True
+
+def updateNewCate(cateId, new_cate_id, url, content):
+    db = DB()
+    if checkUrl(url) != True:
+        query = "INSERT INTO test(url, content, cate_id, new_cate_id, status) VALUES('%s', '%s', '%s', '%s', 3)" %(url, '', cateId, new_cate_id)
+        cursor = db.cursor()
+        # logger.info(query)
+        cursor.execute(query)
+        db.conn.commit()
+    else:
+        query = "UPDATE test SET url = '%s', content = '%s', cate_id = '%s', new_cate_id = '%s', status = 3 WHERE url='%s'" %(url, '', cateId, new_cate_id, url)
+        cursor = db.cursor()
+        # logger.info(query)
+        cursor.execute(query)
+        db.conn.commit()
 
 def predictor():
     import codecs, os
-    stopwordsFile = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/data/test.txt')
-    stopwordsFile = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/data/thethao.txt')
-    f = codecs.open(stopwordsFile, encoding='utf-8', mode='r')
-    content = f.read()
-    f.close()
-    tokenizer = VnTokenizer()
-    tokenContent = tokenizer.tokenize(content)
+    # stopwordsFile = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/data/test.txt')
+    # stopwordsFile = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/data/thethao.txt')
+    # f = codecs.open(stopwordsFile, encoding='utf-8', mode='r')
+    # content = f.read()
+    # f.close()
 
-    words = tokenContent.split()
-    termFrequencyDict = {}
+    db = DB()
+    query = 'select cate_id, tf, url, content from site_content_3'
 
-    filterWords = []
-    for word in words:
-        word = word.strip()
-        #check stop word
+    cursor = db.cursor()
+    logger.info(query)
+    cursor.execute(query)
+    rows = cursor.fetchall()
 
-        # change to lower case
-        if isinstance(word, str):
-            word = unicode(word, 'utf-8').lower().encode('utf-8')
-        else:
-            word = word.lower()
+    '''
+        tokenizer = VnTokenizer()
+        tokenContent = tokenizer.tokenize(content)
 
-        if not tokenizer.isStopWord(word):
-            filterWords.append(word)
+        words = tokenContent.split()
+        termFrequencyDict = {}
 
-            # check term freq
-            #word = word.encode('utf-8')
-            #print type(word)
-            if termFrequencyDict.has_key(word):
-                curCounter = termFrequencyDict.get(word)
-                termFrequencyDict[word] = curCounter + 1
+        filterWords = []
+        for word in words:
+            word = word.strip()
+            #check stop word
+
+            # change to lower case
+            if isinstance(word, str):
+                word = unicode(word, 'utf-8').lower().encode('utf-8')
             else:
-                termFrequencyDict[word] = 1
-    NUM_WORDS = NUMWORDS['total_word']
-    print 'NUM_WORDS => ', NUM_WORDS
-    print termFrequencyDict
-    mapResult = {}
-    # tinh xac xuat tung cate
-    for cateId in LIST_CATE:
-        pc = float(rc.hget('PC', cateId))
-        pcateNew = pc
-        print 'CateID: ', cateId
-        print 'PC : ', pc
-        for word in termFrequencyDict:
-            tf = termFrequencyDict[word]
-            hashKeyWordCate = "%s_%s" %(hashlib.sha1(word).hexdigest(), cateId)
+                word = word.lower()
 
-            pxkci = rc.hget(hashKeyWordCate, 'pxkci')
-            #print word
-            #print 'PXkCi: ', pxkci
-            #print 'TF: ', tf
-            #import pdb
-            #pdb.set_trace()
-            if not pxkci:
-                pxkci = 0
-            else:
-                pxkci = float(pxkci)
-            if (pxkci != 0):
+            if not tokenizer.isStopWord(word):
+                filterWords.append(word)
+
+                # check term freq
+                #word = word.encode('utf-8')
+                #print type(word)
+                if termFrequencyDict.has_key(word):
+                    curCounter = termFrequencyDict.get(word)
+                    termFrequencyDict[word] = curCounter + 1
+                else:
+                    termFrequencyDict[word] = 1
+        NUM_WORDS = NUMWORDS['total_word']
+        print 'NUM_WORDS => ', NUM_WORDS
+        print termFrequencyDict
+    '''
+    for row in rows:
+        currentCateId = row['cate_id']
+        print 'rowID => ', row['cate_id'];
+        url = row['url']
+        tf = row['tf']
+        content = row['content']
+        termFrequencyDict = {}
+        # continue
+
+        try:
+            termFrequencyDict = json.loads(tf)
+        except:
+            print 'error => ', url
+            continue
+        mapResult = {}
+
+        for cateId in LIST_CATE:
+            pc = float(rc.hget('PC', cateId))
+            pcateNew = pc
+            # print 'CateID: ', cateId
+            # print 'PC : ', pc
+            for word in termFrequencyDict:
+                tf = termFrequencyDict[word]
+                # print type(word)
+                if(str(type(word)) == '<type \'unicode\'>'):
+                    # print 'contvert'
+                    word = word.encode('utf-8')
+                hashKeyWordCate = "%s_%s" %(hashlib.sha1(word).hexdigest(), cateId)
+
+                pxkci = rc.hget(hashKeyWordCate, 'pxkci')
+                #print word
+                #print 'PXkCi: ', pxkci
+                #print 'TF: ', tf
                 #import pdb
                 #pdb.set_trace()
-                pcateNew = pcateNew + math.log10(tf * pxkci)
-                #print pcateNew
+                if not pxkci:
+                    pxkci = 0
+                else:
+                    pxkci = float(pxkci)
+                if (pxkci != 0):
+                    #import pdb
+                    #pdb.set_trace()
+                    pcateNew = pcateNew + math.log10(tf * pxkci)
+                    #print pcateNew
 
-        pcateNew = math.fabs(pcateNew)
-        mapResult[cateId] = pcateNew
-        #import pdb
-        #pdb.set_trace()
-        print 'Cate: ', cateId, ' --> ', float(pcateNew)
-        print '--------------------------------'
-        #mapResult[cateId : pcateNew]
+            pcateNew = math.fabs(pcateNew)
+            mapResult[cateId] = pcateNew
+            #import pdb
+            #pdb.set_trace()
+            print 'Cate: ', cateId, ' --> ', float(pcateNew)
+            print '--------------------------------'
+            #mapResult[cateId : pcateNew]
 
-    # check max
+        # check max
 
-    max = 0
-    cateMax = 0
-    for cate in mapResult:
-        # print cate
-        if mapResult[cate] > max:
-            max = mapResult[cate]
-            cateMax = cate
-    print 'Result: '
-    print cateMax
-    print max
+        max = 0
+        cateMax = 0
+        for cate in mapResult:
+            # print cate
+            if mapResult[cate] > max:
+                max = mapResult[cate]
+                cateMax = cate
+        print 'Result: '
+        print "NewCate => ", cateMax
+        print "Value => ", max
+        print "Current Cate => ", currentCateId
+        print "Url => ", url
+        updateNewCate(currentCateId, cateMax, url, content)
+
+def deleteUrl(url):
+    db = DB()
+    query = "DELETE FROM site_content_3 WHERE url='%s'" %(url)
+    cursor = db.cursor()
+    # logger.info(query)
+    cursor.execute(query)
+    db.conn.commit()
+
+def deleteOther():
+    query = "select url from test WHERE cate_id != new_cate_id"
+    # logger.info(query)
+    cursor = db.cursor()
+    logger.info(query)
+    cursor.execute(query)
+    rows = cursor.fetchall()
+    for row in rows:
+        deleteUrl(row['url'])
 
 if __name__ == '__main__':
     db = DB()
@@ -492,7 +571,7 @@ if __name__ == '__main__':
 
     #B3: Tính P(Ci)
     # countPC()
-
+    deleteOther();
     #B4: Phân lớp
     predictor()
 
