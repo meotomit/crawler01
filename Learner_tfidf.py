@@ -2,7 +2,7 @@
 '''
 Created on Dec 3, 2014
 
-@author: phuckx
+@author: nghiepnv
 '''
 import json
 from time import sleep
@@ -178,7 +178,7 @@ def calTfIdf():
         start = WINDOW_SIZE * WINDOW_INDEX  + 1
         stop  = WINDOW_SIZE * (WINDOW_INDEX + 1)
         # things = query.slice(start, stop).all()
-        query = "select id, cate_id, tf from site_content WHERE  order by id limit " + str(start) + ", " + str(WINDOW_SIZE)
+        query = "select id, cate_id, tf from ' + TABLE + ' WHERE  order by id limit " + str(start) + ", " + str(WINDOW_SIZE)
         logger.info(query)
 
         cursor = db.cursor()
@@ -222,7 +222,7 @@ def calTfIdf():
         start = WINDOW_SIZE * WINDOW_INDEX  + 1
         stop  = WINDOW_SIZE * (WINDOW_INDEX + 1)
         # things = query.slice(start, stop).all()
-        query = "select id, cate_id, tf from site_content_2 order by id limit " + str(start) + ", " + str(WINDOW_SIZE)
+        query = "select id, cate_id, tf from ' + TABLE + ' order by id limit " + str(start) + ", " + str(WINDOW_SIZE)
         logger.info(query)
 
         cursor = db.cursor()
@@ -564,14 +564,14 @@ if __name__ == '__main__':
     print 'Classifier'
 
     #B1: Tính TF, IDF và TFIDF
-    # calTfIdf()
+    calTfIdf()
 
     #B2: Tính P(Xk|Ci)
-    # PXkCi()
+    PXkCi()
 
     #B3: Tính P(Ci)
-    # countPC()
-    deleteOther();
+    countPC()
+
     #B4: Phân lớp
     predictor()
 
