@@ -43,7 +43,7 @@ NUM_DOCS = 10735
 TABLE = 'site_content_2'
 LIST_CATE = [3, 6, 8, 11, 12, 13, 14]
 CATE_TITLE = {3: 'Kinh Te- Tai chinh', 6: 'Doi song, nghe thuat, giai tri', 8: 'Y hoc suc khoe', 11: 'Xa hoi, van hoa', 12: 'The thao', 13 : 'Cong nghe', 14: 'Oto - xe may'}
-TF_THRESHOLD = 0 # chi lay cac tu co term frequency > 1
+TF_THRESHOLD = 1 # chi lay cac tu co term frequency > 1
 #WORDS = {}
 NUMWORDS = {'a': 0}
 
@@ -121,6 +121,7 @@ def countDF():
 '''
     Tinh trong so cua cac tu theo TF_IDF
 '''
+'''
 def countTF_IDF():
     count = 0
     pipe = rc.pipeline()
@@ -156,13 +157,14 @@ def countTF_IDF():
             print 'Total : ', count
     pipe.execute()
     print count
-
+'''
     
 '''
     Tính trọng số tổng của cả cate
 '''
 def countTotalWeightInCate():
-    mapTfIdf = rc.hgetall('TF_IDF')
+    #mapTfIdf = rc.hgetall('TF_IDF')
+    mapTfIdf = rc.hgetall('TF') # tinh theo TF, ko tinh theo TF_IDF nua
     count= 1
     pipe = rc.pipeline()
     pipe.multi()
@@ -292,30 +294,33 @@ def predictor():
     # tinh xac xuat tung cate
     for cateId in LIST_CATE:
         pc = float(rc.hget('PC', cateId))
-        pcateNew = pc
+        pcateNew = math.log10(pc)
         print 'CateID: ', cateId
-        print 'PC : ', pc
+        #print 'PC : ', pc
+        #print 'PC : ', pcateNew
         for word in termFrequencyDict:
             tf = termFrequencyDict[word]
             
-            oldTf = rc.hget("TF", word)
-            oldDf = rc.hget("DF", word)
-            if oldTf != None and oldDf != None:     
-                oldTf = float(oldTf)
-                oldDf = float(oldDf)
+#             oldTf = rc.hget("TF", word)
+#             oldDf = rc.hget("DF", word)
+#             if oldTf != None and oldDf != None:     
+#                 oldTf = float(oldTf)
+#                 oldDf = float(oldDf)
                 #tfidf = (1 + math.log10(tf)) * math.log10(NUM_DOCS / df)            
                 #tfidf = tf * (1 + math.log10(NUM_DOCS / (idf + 1)))            
-                tfidf = (1 + math.log10(tf + oldTf)) * math.log10(NUM_DOCS / (oldDf + 1))            
-                pxkci = rc.hget('pxkci', word + "|" + str(cateId))
-                if not pxkci:
-                    pxkci = 0
-                else:
-                    pxkci = float(pxkci)
-                if (pxkci != 0):
-                    pcateNew = pcateNew + math.log10(tfidf * pxkci)
-                    print pcateNew
+                #tfidf = (1 + math.log10(tf + oldTf)) * math.log10(NUM_DOCS / (oldDf + 1))            
+            pxkci = rc.hget('pxkci', word + "|" + str(cateId))
+            if not pxkci:
+                pxkci = 0
+            else:
+                pxkci = float(pxkci)
+            if (pxkci != 0):
+                #pcateNew = pcateNew + math.log10(tfidf * pxkci)
+                pcateNew = pcateNew + math.log10(tf * pxkci)
+                #print pcateNew
 
         pcateNew = math.fabs(pcateNew)
+        print pcateNew
         mapResult[cateId] = pcateNew
         #import pdb
         #pdb.set_trace()
@@ -326,7 +331,7 @@ def predictor():
     
     # check max
 
-    max = 0
+    max = -9999999999
     cateMax = 0
     for cate in mapResult:
         # print cate
