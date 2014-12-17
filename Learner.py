@@ -42,8 +42,8 @@ NUM_DOCS = 10735
 
 TABLE = 'site_content_2'
 LIST_CATE = [3, 6, 8, 11, 12, 13, 14]
-TF_THRESHOLD = 8 # chi lay cac tu co term frequency > 1
-WORDS = {}
+TF_THRESHOLD = 0 # chi lay cac tu co term frequency > 1
+#WORDS = {}
 NUMWORDS = {'a': 0}
 
 '''
@@ -81,36 +81,50 @@ def countDF():
                 try :
                     wordsObj = json.loads(content)
                     #print 'Total words: ' + str(len(wordsObj))
+                    count = 0
+                    pipe = rc.pipeline()
+                    pipe.multi()
+                            
                     for word in wordsObj:
                         tf = int(wordsObj[word])   
                         if tf > TF_THRESHOLD :                
                             #print word, ' : ', tf
-                            pipe = rc.pipeline()
-                            pipe.multi()
+                            
                             if isinstance(word, unicode):
                                 word = word.encode('utf-8')
-                            pipe.hincrby("total_cate_weight", cateId, tf) # tính tổng trọng số của các từ thuộc vào cate
-                            pipe.hincrby("word_cate", word + "|" +str(cateId), tf) # tính tổng trọng số của từng từ trong một cate
-                            pipe.hincrby("DF", word, 1)
+                            #pipe.hincrby("total_cate_weight", cateId, tf) # tính tổng trọng số của các từ thuộc vào cate
+                            #pipe.hincrby("word_cate", word + "|" +str(cateId), tf) # tính tổng trọng số của từng từ trong một cate
+                            pipe.hincrby("DF", word, 1) # số văn bản mà từ này xuất hiện
                             pipe.hset("TF", word, tf)
-                            pipe.hset('CATE', word, cateId) # xac dinh word thuoc cate nao
-                            pipe.execute()
+                            pipe.sadd("CATE_" + str(cateId), word) # Thêm word vào cate --> để sau này check xem word có thuộc cate hay không
+                            #pipe.hset('CATE', word, cateId) # xac dinh word thuoc cate nao
+                            count += 1
+                            #pipe.execute()
+                            if count % 1000 == 0:
+                                pipe.execute()
+                                #print 'sleep ...'
+                                #sleep(3)
+                            '''
                             if WORDS.has_key(word) == False:
                                 WORDS[word] = 1
                                 NUMWORDS['a'] += 1
+                            '''
+                    pipe.execute()
                 except:
                     logger.error('Error in DOC_ID: ' + str(docId))
                     tb = traceback.format_exc()
                     logging.error(tb)
         WINDOW_INDEX += 1
-    logger.info('Done counting DF')
+    logger.info('Done counting TF, DF')
 
-
-
+'''
+    Tinh trong so cua cac tu theo TF_IDF
+'''
 def countTF_IDF():
     count = 0
     pipe = rc.pipeline()
     pipe.multi()
+    
     for word in rc.hkeys("DF"):
         
         tf = float(rc.hget("TF", word))
@@ -119,7 +133,11 @@ def countTF_IDF():
         #import pdb
         #pdb.set_trace()
         #tfidf = (1 + math.log10(tf)) * math.log10(NUM_DOCS / df)
-        tfidf = tf * (1 + math.log10(NUM_DOCS / (df + 1)))
+        
+        #tfidf = tf * (1 + math.log10(NUM_DOCS / (idf + 1)))
+        
+        tfidf = (1 + math.log10(tf)) * math.log10(NUM_DOCS / df)
+        
         #tfidf2 = (1 + math.log10(tf)) * math.log10(NUM_DOCS / df)
         #print word
         #print 'TF: ', tf
@@ -143,21 +161,73 @@ def countTF_IDF():
     Tính trọng số tổng của cả cate
 '''
 def countTotalWeightInCate():
-    listWords = rc.hgetall('CATE')
+    mapTfIdf = rc.hgetall('TF_IDF')
     count= 1
-    for word in listWords:
+    pipe = rc.pipeline()
+    pipe.multi()
+    
+    for word in mapTfIdf:
+        tfidf = float(mapTfIdf[word])
+        #print tfidf
+        for cateId in LIST_CATE:
+            #print cateId
+            #print word
+            #print redisKey
+            #print tfidf # trong so cua tu
+            #print rc.sismember("CATE_" + str(cateId), word)
+            #print '--------------'
+            pipe.hincrbyfloat("WEIGHT_CATE", "CATE_" + str(cateId), tfidf) # total weight of word in cate
+            
+            if rc.sismember("CATE_" + str(cateId), word): # neu word la member cua cateId
+                pipe.hincrbyfloat("WEIGHT_WORD_CATE", word + "|" + str(cateId) , tfidf) # total weight of word in cate               
         count += 1
-        if count > 10:
-            break
-        print word
-        print listWords[word]
+        if count % 1000 == 0:
+            pipe.execute()
+            print 'Count: ', count
+    print 'Count: ', count
+    pipe.execute()    
+
+'''
+    Tinh xac xuat XkCi
+'''
+def PXkCi():
+    #for cateId in (3,6,8,11,12,13,14):
+    #    print cateId
+    #(là tổng trọng số của từ A trong cate C1 + 1 )/ (tổng trọng số của các từ trong cate C1 + số từ trong văn bản)
+    
+    mapWeightCate = rc.hgetall('WEIGHT_CATE')
+    mapWeightWordCate = rc.hgetall('WEIGHT_WORD_CATE')
+    count = 0
+    pipe = rc.pipeline()
+    pipe.multi()
+    
+    totalWord = rc.hlen("TF")
+    
+    for cateId in LIST_CATE:
+        mapWordInCate = rc.smembers("CATE_" + str(cateId))
+        weightCate = mapWeightCate["CATE_" + str(cateId)] # total weight of cate
+        for word in mapWordInCate:
+            key = word + "|" + str(cateId)
+            totalWeightOfWordInCate = float(mapWeightWordCate[key])            
+            pxkci = float( totalWeightOfWordInCate + 1) / float( float(weightCate) + totalWord)
+            count += 1
+            #pxkci = float(int(wordWeightInCate) + 1) / float(int(mapCateWeight[cate]) + NUM_WORDS)        # --> laplace
+            #print pxkci
+            #print '---------------'
         
-        #print value    
+            pipe.hset('pxkci', key, pxkci)
+            if count % 1000 == 0:
+                pipe.execute()
+                print count
+        
+    pipe.execute()
+    print count 
+    print 'Count PXkCi --> Done'
 
 '''
 Tinh xac xuat tung chuyen muc
 '''
-def countPC():
+def countProbabilityOfCategory():
     db = DB()
     query = 'select cate_id, count(cate_id) total_item from ' + TABLE + ' group by cate_id'
     cursor = db.cursor()
@@ -169,48 +239,7 @@ def countPC():
         totalItem = row['total_item']
         pc = float(totalItem) / NUM_DOCS
         rc.hset("PC", cateId, pc)
-    print 'Count PC --> DONE'
-
-'''
-    Tinh xac xuat XkCi
-'''
-def PXkCi():
-    #for cateId in (3,6,8,11,12,13,14):
-    #    print cateId
-    mapCateWeight = rc.hgetall('total_cate_weight')
-    print mapCateWeight
-    count = 0
-    pipe = rc.pipeline()
-    pipe.multi()
-    
-    for key in rc.hkeys('word_cate'):
-        count += 1
-        #if count > 10:
-        #    break
-        #print key
-        word = key.split('|')[0]
-        cate = key.split('|')[1]
-        #print word
-        #print cate
-        wordWeightInCate = rc.hget('word_cate', key)
-        #print mapCateWeight[cate]
-        #print wordWeightInCate 
-        
-        #pxkci = float(wordWeightInCate) / float(mapCateWeight[cate])
-        NUM_WORDS = NUMWORDS['a']
-        pxkci = float(int(wordWeightInCate) + 1) / float(int(mapCateWeight[cate]) + NUM_WORDS)    # --> laplace
-        print pxkci
-        print '---------------'
-        #import pdb
-        #pdb.set_trace()
-        pipe.hset('pxkci_2', key, pxkci)
-        if count % 1000 == 0:
-            pipe.execute()
-            print count
-    
-    pipe.execute()
-    print count 
-    print 'Count PXkCi --> Done'
+    print 'Count Probability of each Category --> DONE'
 
 def predictor():
     import codecs, os
@@ -303,25 +332,24 @@ def predictor():
 if __name__ == '__main__':
     
     # Step 1: Tinh DF
-    countDF()
+    #countDF()
     
     # Step 2: Tinh TF_IDF    --> ko can neu ko tinh theo TF_IDF
     #https://lucene.apache.org/core/4_0_0/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html
-    countTF_IDF()
+    #countTF_IDF()
     
     # Step 3 --> ko can neu ko tinh theo TF_IDF
-    countTotalWeightInCate()
+    #countTotalWeightInCate()
+    
     
     # Step 
     PXkCi()
     
     # step 
-    countPC()
+    #countProbabilityOfCategory()
     
     # step
-    predictor()
-    
-    
+    #predictor()
     
     
     '''
