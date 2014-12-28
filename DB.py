@@ -46,6 +46,7 @@ class DB:
             #cursor.execute('SET CHARACTER SET utf8;')
             cursor.execute(sql)
         return cursor
+        
 
 #db = DB()
 #import pdb
