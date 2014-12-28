@@ -15,14 +15,14 @@ from time import time
 import traceback
 
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB, BernoulliNB
+from sklearn.naive_bayes import MultinomialNB
 
 from sklearn.utils.extmath import density
 from sklearn import metrics
 
 import pickle
 
-MODEL_DIR = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/model/')
+MODEL_DIR = os.path.abspath(os.path.dirname(os.path.abspath(__file__)) + '/model') + '/'
 
 class Learner(object):
     '''
@@ -117,18 +117,18 @@ class Learner(object):
         print("f1-score:   %0.3f" % score)      
         
         print 'write model --> file'
-        str = pickle.dumps(clf)
+        modelStr = pickle.dumps(clf)
         
         fileName = str(clf).split('(')[0]
         
         file = MODEL_DIR + fileName
         
         f = codecs.open(file, "w", "utf-8")
-        f.write(str)
+        f.write(modelStr)
         f.close()
         
-        print("classification report:")
-        print(metrics.classification_report(y_test, pred, target_names=[6, 12, 13, 14]))
+        #print("classification report:")
+        #print(metrics.classification_report(y_test, pred, target_names=[6, 12, 13, 14]))
         
     def loadModel(self, modelName):
         
@@ -151,11 +151,22 @@ if __name__ == '__main__':
     print 'Loading data ...'
     obj = Learner()
     
-    #vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5)
-    vectorizer = TfidfVectorizer(sublinear_tf=True, min_df=10)
+    vectorizer = TfidfVectorizer(sublinear_tf=True, max_df=0.5)
+    #vectorizer = TfidfVectorizer(sublinear_tf=True, min_df=10)
     
+    # write data train --> file
     dataTrain, yTrain = obj.getTrainingData()
+    #f = codecs.open(MODEL_DIR + "data_X_train.npy", "w", "utf-8")
+    f = open(MODEL_DIR + "data_X_train.npy", "w")
+    np.save(f, dataTrain)
+    f.close()
+    
+    # write data test --> file
     dataTest, yTest = obj.getTestData()
+    f2 = open(MODEL_DIR + "data_Y_train.npy", "w")
+    np.save(f2, dataTest)
+    f2.close()
+    
     print 'Data Loaded'
     print 'Total training documents: ', len(dataTrain)
     print 'Total test documents: ', len(dataTest)    
@@ -181,16 +192,17 @@ if __name__ == '__main__':
     print('-' * 80)
 
     results = []
-    results.append(obj.benchmark(MultinomialNB(alpha=.01)), xTrain, yTrain, xTest, yTest)
-    
-    indices = np.arange(len(results))
+    res1 = obj.benchmark(MultinomialNB(alpha=.01), xTrain, yTrain, xTest, yTest)
+    results.append(res1)
+    print results
+    #indices = np.arange(len(results))
 
-    results = [[x[i] for x in results] for i in range(4)]
+    #results = [[x[i] for x in results] for i in range(4)]
     
-    clf_names, score, training_time, test_time = results
-    training_time = np.array(training_time) / np.max(training_time)
-    test_time = np.array(test_time) / np.max(test_time)
-    print score
+    #clf_names, score, training_time, test_time = results
+    #training_time = np.array(training_time) / np.max(training_time)
+    #test_time = np.array(test_time) / np.max(test_time)
+    #print score
     
            
     print 'DONE'
